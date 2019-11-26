@@ -22,7 +22,7 @@ public class PlayerAction : MonoBehaviour
 
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
-        keywordRecognizer.Start();
+        //keywordRecognizer.Start();
     }
 
     private void RecognizedSpeech(PhraseRecognizedEventArgs speech)
@@ -46,5 +46,26 @@ public class PlayerAction : MonoBehaviour
             LocalScore -= 10;
             streak.streak = 0;
         }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(Key))
+        {
+            if (bc.Presswindow == true)
+            {
+                GameObject.Find(bc.CurrentBeat).SetActive(false);
+                LocalScore += 100;
+                streak.streak += 1;
+                bc.Presswindow = false;
+
+            }
+            else
+            {
+                LocalScore -= 10;
+                streak.streak = 0;
+            }
+        }
+    
     }
 }
