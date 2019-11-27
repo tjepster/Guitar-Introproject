@@ -4,10 +4,9 @@ public class Movement : MonoBehaviour
 {
 
     public Rigidbody rb;
-    public float speed;
-    // Update is called once per frame
-    void FixedUpdate()
+    public int speed = 100;
+    void Start()
     {
-        rb.AddForce(0, 0, speed * Time.fixedDeltaTime);
+        rb.AddForce(0, 0, -speed, ForceMode.VelocityChange);
     }
 }
