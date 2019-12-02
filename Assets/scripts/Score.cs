@@ -3,23 +3,20 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public PlayerAction playerRed, playerBlue, playerYellow;
+    public int score;
     public Text Scoretext;
     public Streak streak;
-    int LocalStreak;
+    int OldScore = 0;
     
     void Update()
     {
-        if (streak.streak == 0)
+        if (OldScore != score)
         {
-            LocalStreak = 1;
+            score *= streak.times;
+            OldScore = score;
         }
-        else
-        {
-            LocalStreak = streak.streak;
-        }
-        int localScore = (playerBlue.LocalScore + playerRed.LocalScore + playerYellow.LocalScore) * LocalStreak;
-        string sctext = "Score " + localScore.ToString();
+        
+        string sctext = "Score " + score.ToString();
 
 
         Scoretext.text = sctext;

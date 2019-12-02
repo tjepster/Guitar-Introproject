@@ -9,6 +9,7 @@ public class PlayerAction : MonoBehaviour
 {
     public BeatCollision bc;
     public Streak streak;
+    public Score score;
     public Vector3 start = new Vector3(0, 0, 30);
     public string Colour;
     public string Key;
@@ -36,14 +37,13 @@ public class PlayerAction : MonoBehaviour
         if (bc.Presswindow == true)
         {
             GameObject.Find(bc.CurrentBeat).SetActive(false);
-            LocalScore += 100;
+            score.score += 200;
             streak.streak += 1;
             bc.Presswindow = false;
 
         }
         else
         {
-            LocalScore -= 10;
             streak.streak = 0;
         }
     }
@@ -55,17 +55,19 @@ public class PlayerAction : MonoBehaviour
             if (bc.Presswindow == true)
             {
                 GameObject.Find(bc.CurrentBeat).SetActive(false);
-                LocalScore += 100;
+                score.score += 200;
                 streak.streak += 1;
                 bc.Presswindow = false;
 
             }
             else
             {
-                LocalScore -= 10;
                 streak.streak = 0;
             }
         }
-    
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            FindObjectOfType<GameManager>().Pause();
+        }
     }
 }

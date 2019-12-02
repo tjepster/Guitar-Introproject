@@ -318,6 +318,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3424503547508023207, guid: 6cab6f2711bc0ac49a2831d1926206c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3424503547508023210, guid: 6cab6f2711bc0ac49a2831d1926206c6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1170,7 +1175,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -113, y: 250}
+  m_AnchoredPosition: {x: -113, y: 271}
   m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1355176865
@@ -1221,7 +1226,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Score 0
+  m_Text: 'Score 0
+
+'
 --- !u!222 &1355176867
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1351,6 +1358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   streak: 0
   StreakText: {fileID: 1619325127}
+  times: 1
 --- !u!114 &1619325127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1380,9 +1388,11 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Streak 0
+  m_Text: 'Streak 0
+
+    1x'
 --- !u!222 &1619325128
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2035,6 +2045,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2022496454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3424503547508023207, guid: 6cab6f2711bc0ac49a2831d1926206c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 524307601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2022496458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022496454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f278b47a4d57084d8e5c0a081a4f93c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1484903082296878233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2042,16 +2070,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1484903082257953207, guid: d308c2654ef292f42900952c5b8b0998,
-        type: 3}
-      propertyPath: streak
-      value: 
-      objectReference: {fileID: 1619325126}
     - target: {fileID: 1484903082257953204, guid: d308c2654ef292f42900952c5b8b0998,
         type: 3}
       propertyPath: m_Name
       value: Player blue
       objectReference: {fileID: 0}
+    - target: {fileID: 1484903082257953207, guid: d308c2654ef292f42900952c5b8b0998,
+        type: 3}
+      propertyPath: streak
+      value: 
+      objectReference: {fileID: 1619325126}
     - target: {fileID: 1484903082257953194, guid: d308c2654ef292f42900952c5b8b0998,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2333,16 +2361,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7104493097842373865, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
-        type: 3}
-      propertyPath: streak
-      value: 
-      objectReference: {fileID: 1619325126}
     - target: {fileID: 7104493097842373864, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
         type: 3}
       propertyPath: m_Name
       value: Player red
       objectReference: {fileID: 0}
+    - target: {fileID: 7104493097842373865, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
+        type: 3}
+      propertyPath: streak
+      value: 
+      objectReference: {fileID: 1619325126}
     - target: {fileID: 7104493097842373862, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2422,16 +2450,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7816123850930350607, guid: f44013a37724d3340b3e092cfe75b03a,
-        type: 3}
-      propertyPath: streak
-      value: 
-      objectReference: {fileID: 1619325126}
     - target: {fileID: 7816123850930350606, guid: f44013a37724d3340b3e092cfe75b03a,
         type: 3}
       propertyPath: m_Name
       value: Player yellow
       objectReference: {fileID: 0}
+    - target: {fileID: 7816123850930350607, guid: f44013a37724d3340b3e092cfe75b03a,
+        type: 3}
+      propertyPath: streak
+      value: 
+      objectReference: {fileID: 1619325126}
     - target: {fileID: 7816123850930350592, guid: f44013a37724d3340b3e092cfe75b03a,
         type: 3}
       propertyPath: m_LocalPosition.x
