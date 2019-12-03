@@ -11,6 +11,7 @@ public class Streak : MonoBehaviour
         if (streak < 10)
         {
             times = 1;
+            //FindObjectOfType<FireActive>().StopTheFire();
         }
         else if (streak >= 10 && streak < 20)
         {
@@ -23,7 +24,7 @@ public class Streak : MonoBehaviour
         else if (streak >= 30)
         {
             times = 4;
-            GameObject.Find("Fire").SetActive(true);
+            //FindObjectOfType<FireActive>().StartTheFire();
         }
         string sttext = "Streak " + streak.ToString();
         StreakText.text = sttext + System.Environment.NewLine + times.ToString() + "x";

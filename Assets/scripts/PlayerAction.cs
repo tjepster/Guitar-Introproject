@@ -8,9 +8,6 @@ using UnityEngine.Windows.Speech;
 public class PlayerAction : MonoBehaviour
 {
     public BeatCollision bc;
-    public Streak streak;
-    public Score score;
-    public Vector3 start = new Vector3(0, 0, 30);
     public string Colour;
     public string Key;
     public int LocalScore = 0;
@@ -37,14 +34,14 @@ public class PlayerAction : MonoBehaviour
         if (bc.Presswindow == true)
         {
             GameObject.Find(bc.CurrentBeat).SetActive(false);
-            score.score += 200;
-            streak.streak += 1;
+            FindObjectOfType<Score>().score += 200;
+            FindObjectOfType<Streak>().streak += 1;
             bc.Presswindow = false;
 
         }
         else
         {
-            streak.streak = 0;
+            FindObjectOfType<Streak>().streak = 0;
         }
     }
 
@@ -55,14 +52,14 @@ public class PlayerAction : MonoBehaviour
             if (bc.Presswindow == true)
             {
                 GameObject.Find(bc.CurrentBeat).SetActive(false);
-                score.score += 200;
-                streak.streak += 1;
+                FindObjectOfType<Score>().score += 200;
+                FindObjectOfType<Streak>().streak += 1;
                 bc.Presswindow = false;
 
             }
             else
             {
-                streak.streak = 0;
+                FindObjectOfType<Streak>().streak = 0;
             }
         }
         if (Input.GetKeyDown(KeyCode.Escape))

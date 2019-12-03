@@ -496,7 +496,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 258670143}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1326235787}
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &258670143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2262,16 +2273,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player blue
       objectReference: {fileID: 0}
-    - target: {fileID: 1484903082257953207, guid: d308c2654ef292f42900952c5b8b0998,
-        type: 3}
-      propertyPath: streak
-      value: 
-      objectReference: {fileID: 315783552}
-    - target: {fileID: 1484903082257953207, guid: d308c2654ef292f42900952c5b8b0998,
-        type: 3}
-      propertyPath: score
-      value: 
-      objectReference: {fileID: 1131771218}
     - target: {fileID: 1484903082257953194, guid: d308c2654ef292f42900952c5b8b0998,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2327,6 +2328,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1484903082257953207, guid: d308c2654ef292f42900952c5b8b0998,
+        type: 3}
+      propertyPath: streak
+      value: 
+      objectReference: {fileID: 315783552}
+    - target: {fileID: 1484903082257953207, guid: d308c2654ef292f42900952c5b8b0998,
+        type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 1131771218}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d308c2654ef292f42900952c5b8b0998, type: 3}
 --- !u!1001 &982080744
@@ -3111,6 +3122,7 @@ GameObject:
   - component: {fileID: 1326235785}
   - component: {fileID: 1326235784}
   - component: {fileID: 1326235786}
+  - component: {fileID: 1326235787}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -3184,6 +3196,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8de8935e4ae37848818c1de1ef6aea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1326235787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326235782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2201dda7afe2e74aa543dadc0f26671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1333937125
@@ -4060,16 +4084,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player yellow
       objectReference: {fileID: 0}
-    - target: {fileID: 7816123850930350607, guid: f44013a37724d3340b3e092cfe75b03a,
-        type: 3}
-      propertyPath: streak
-      value: 
-      objectReference: {fileID: 315783552}
-    - target: {fileID: 7816123850930350607, guid: f44013a37724d3340b3e092cfe75b03a,
-        type: 3}
-      propertyPath: score
-      value: 
-      objectReference: {fileID: 1131771218}
     - target: {fileID: 7816123850930350592, guid: f44013a37724d3340b3e092cfe75b03a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4125,6 +4139,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7816123850930350607, guid: f44013a37724d3340b3e092cfe75b03a,
+        type: 3}
+      propertyPath: streak
+      value: 
+      objectReference: {fileID: 315783552}
+    - target: {fileID: 7816123850930350607, guid: f44013a37724d3340b3e092cfe75b03a,
+        type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 1131771218}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f44013a37724d3340b3e092cfe75b03a, type: 3}
 --- !u!1001 &2130514664

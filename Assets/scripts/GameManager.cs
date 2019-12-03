@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
             StopGame();
         }
     }
-    void Resume()
+    public void Resume()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
@@ -32,6 +32,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         song.Pause();
         GameIsPaused = true;
+    }
+    public void MainMenu()
+    {
+        GameIsPaused = false;
+        Time.timeScale = 1;
+        song.Stop();
+        SceneManager.LoadScene("Menu");
     }
 
 

@@ -7,6 +7,6 @@ public class MainMenu : MonoBehaviour
 {
     public void Menu()
     {
-        SceneManager.LoadScene("Menu");
+        FindObjectOfType<GameManager>().MainMenu();
     }
 }
