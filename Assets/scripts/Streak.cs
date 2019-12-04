@@ -3,9 +3,12 @@ using UnityEngine.UI;
 
 public class Streak : MonoBehaviour
 {
+    // keeps track of the streak and changes the streak in the player UI if needed
     public int streak;
     public Text StreakText;
     public int times = 1;
+    // The streak is changed in the PlayerAction class here we only need to moniter it, update the UI and add a multiplier to the score
+    // For every 10 streak 1 is added to the score multiplier
     void Update()
     {
         if (streak < 10)
