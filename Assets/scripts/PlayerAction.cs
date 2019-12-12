@@ -7,30 +7,36 @@ using UnityEngine.Windows.Speech;
 
 public class PlayerAction : MonoBehaviour
 {
+    // conections to the transform and Beatcollision components of the playerbutton
+    public Transform scale;
     public BeatCollision bc;
+    // easy to change variables for colour of player and key to press
     public string Colour;
     public string Key;
-    public int LocalScore = 0;
-
+    // start of the voice recognision sofware
     private KeywordRecognizer keywordRecognizer;
     readonly private Dictionary<string, Action> actions = new Dictionary<string, Action>();
     void Start()
     {
         actions.Add(Colour, Rainbow);
 
+        // Voice recognision start
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
-        //keywordRecognizer.Start();
+        keywordRecognizer.Start();
     }
 
+    // Is called when a word is recognized
     private void RecognizedSpeech(PhraseRecognizedEventArgs speech)
     {
         Debug.Log(speech.text);
         actions[speech.text].Invoke();
     }
 
+    // checks if the button press is at the right time to give points or if not to end the streak
     private void Rainbow()
     {
+        Pressed();
         if (bc.Presswindow == true)
         {
             GameObject.Find(bc.CurrentBeat).SetActive(false);
@@ -43,12 +49,15 @@ public class PlayerAction : MonoBehaviour
         {
             FindObjectOfType<Streak>().streak = 0;
         }
+        Invoke("ButtonUp", 0.1f);
     }
 
+    // checks if the button press is at the right time to give points or if not to end the streak
     void Update()
     {
         if (Input.GetKeyDown(Key))
         {
+            Pressed();
             if (bc.Presswindow == true)
             {
                 GameObject.Find(bc.CurrentBeat).SetActive(false);
@@ -61,10 +70,25 @@ public class PlayerAction : MonoBehaviour
             {
                 FindObjectOfType<Streak>().streak = 0;
             }
+            Invoke("ButtonUp", 0.1f);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             FindObjectOfType<GameManager>().Pause();
         }
+    }
+
+    // pushes the button down on press
+    void Pressed()
+    {
+        scale.localScale = new Vector3(1, 0.2f, 1);
+        scale.localPosition -= new Vector3(0, 0.05f, 0);
+    }
+
+    // brings the button back to normal
+    void ButtonUp()
+    {
+        scale.localScale = new Vector3(1, 0.25f, 1);
+        scale.localPosition += new Vector3(0, 0.05f, 0);
     }
 }

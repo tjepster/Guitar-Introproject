@@ -119,9 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48bc0025e51bd164897dbcf310048891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scale: {fileID: 7104493097842373862}
   bc: {fileID: 7104493097842373866}
-  streak: {fileID: 0}
-  start: {x: 0, y: 0, z: 30}
   Colour: red
   Key: s
   LocalScore: 0
