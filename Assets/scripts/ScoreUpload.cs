@@ -10,11 +10,11 @@ using UnityEngine.Networking;
     public string highscoreURL = "https://www.cdprojektblue.com/scores/getscores.php";
 
     //Text to display the result on
-    public Text statusText;
+    // public Text statusText;
 
     void Start()
     {
-        StartCoroutine(PostScores());
+        // StartCoroutine(PostScores());
     }
 
     IEnumerator PostScores(string name, int score)
@@ -38,7 +38,7 @@ using UnityEngine.Networking;
     // Get the scores from the MySQL DB to display in a GUIText.
     IEnumerator GetScores()
     {
-        statusText.text = "Loading Scores";
+      //  statusText.text = "Loading Scores";
         WWW hs_get = new WWW(highscoreURL);
         yield return hs_get;
 
@@ -48,7 +48,7 @@ using UnityEngine.Networking;
         }
         else
         {
-            statusText.text = hs_get.text; // this is a GUIText that will display the scores in game.
+      //      statusText.text = hs_get.text; // this is a GUIText that will display the scores in game.
         }
     }
 
