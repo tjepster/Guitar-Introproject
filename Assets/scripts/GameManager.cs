@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
+using System.Linq;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +14,20 @@ public class GameManager : MonoBehaviour
     public static bool GameIsPaused = false;
     public AudioSource song;
     public GameObject pauseMenu;
+
+    public GameObject redBeat;
+    public GameObject blueBeat;
+    public GameObject yellowBeat;
+
+    public List<string> levelStringList = new List<string>();
+
+    private void Start()
+    {
+        string filename = Application.dataPath + "/level.txt";
+        Readfile(filename);
+        MakeLevel();
+    }
+
 
     // This method is called when the esc button is pressed it can either start or stop a pause screen
     public void Pause()
@@ -54,5 +71,77 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    private void Readfile(string filename)
+    {
+        StreamReader reader = new StreamReader(filename);
 
+        while (!reader.EndOfStream)
+        {
+            string line = reader.ReadLine();
+            levelStringList.Add(line);
+        }
+        reader.Close();
+    }
+    void MakeLevel()
+    {
+        float pos = 0;
+        string Beat = "start";
+        bool Ispos;
+        for (int i = 0; i < levelStringList.Count; i++)
+        {
+            string line = levelStringList[i];
+            try
+            {
+                pos = float.Parse(line);
+                Ispos = true;
+            }
+            catch (FormatException)
+            {
+                Beat = line;
+                Ispos = false;
+            }
+            if (Beat != "r" && Beat != "y" && Beat != "b")
+            {
+
+            }
+            else if (Beat == "r" && Ispos)
+            {
+                Instantiate(redBeat, new Vector3(0, 0.25f, pos), Quaternion.identity);
+            }
+            else if (Beat == "y" && Ispos)
+            {
+                Instantiate(yellowBeat, new Vector3(-2, 0.25f, pos), Quaternion.identity);
+            }
+            else if (Beat == "b" && Ispos)
+            {
+                Instantiate(blueBeat, new Vector3(2, 0.25f, pos), Quaternion.identity);
+            }
+        }
+    }
 }
+
+//Debug.Log("jup");
+/*string line = leveltext[i];
+            try
+            {
+                pos = float.Parse(line);
+            }
+            catch (FormatException)
+            {
+                Beat = line;
+            }
+            if (pos == -10 || Beat != "r" || Beat != "y" || Beat != "b")
+            {
+            }
+            else if (Beat == "r")
+            {
+                Instantiate(redBeat, new Vector3(0,0,pos), Quaternion.identity);
+            }
+            else if (Beat == "y")
+            {
+                Instantiate(yellowBeat, new Vector3(0, 0, pos), Quaternion.identity);
+            }
+            else if (Beat == "b")
+            {
+                Instantiate(blueBeat, new Vector3(0, 0, pos), Quaternion.identity);
+            }*/
