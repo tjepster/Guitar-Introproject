@@ -7,6 +7,7 @@ TagManager:
   - player button
   - Beat
   - Fire
+  - Fire press
   layers:
   - Default
   - TransparentFX
