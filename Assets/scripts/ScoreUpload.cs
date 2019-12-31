@@ -14,16 +14,16 @@ using UnityEngine.Networking;
 
     void Start()
     {
-        // StartCoroutine(PostScores());
+        // StartCoroutine(PostScores(name,score,level));
     }
 
-    IEnumerator PostScores(string name, int score)
+    IEnumerator PostScores(string name, int score, string level)
     {
-        //This connects to a server side php script that will add the name and score to a MySQL DB.
-        // Supply it with a string representing the players name and the players score.
-        string hash = Md5Sum(name + score + secretKey);
+        //This connects to a server side php script that will add the name, score and level to a MySQL DB.
+        // Supply it with a string representing the players name, players score and level.
+        string hash = Md5Sum(name + score + level + secretKey);
 
-        string post_url = addScoreURL + "?name=" + WWW.EscapeURL(name) + "&score=" + score + "&hash=" + hash;
+        string post_url = addScoreURL + "?name=" + WWW.EscapeURL(name) + "&score=" + score + "&level=" + level + "&hash=" + hash;
 
         // Post the URL to the site and create a download object to get the result.
         WWW hs_post = new WWW(post_url);
