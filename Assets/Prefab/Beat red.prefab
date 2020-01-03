@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1809939311300965714}
   m_Layer: 0
   m_Name: Beat red
-  m_TagString: Beat
+  m_TagString: BeatR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

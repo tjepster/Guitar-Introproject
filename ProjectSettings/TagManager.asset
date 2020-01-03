@@ -5,9 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - player button
-  - Beat
   - Fire
   - Fire press
+  - BeatY
+  - BeatR
+  - BeatB
   layers:
   - Default
   - TransparentFX

@@ -97,21 +97,26 @@ public class PlayerAction : MonoBehaviour
     {
         if (Colour == "red")
         {
+            
             Instantiate(Fire, new Vector3(0, 0.4f, 7.5f), Quaternion.Euler(90, 0, 0));
+            Invoke("FireOff", 0.3f);
         }
         else if (Colour == "yellow")
         {
+            
             Instantiate(Fire, new Vector3(-2, 0.4f, 7.5f), Quaternion.Euler(90, 0, 0));
+            Invoke("FireOff", 0.3f);
         }
         else if (Colour == "blue")
         {
-            Instantiate(Fire, new Vector3(2, 0.4f, 7.5f), Quaternion.Euler(90,0,0));
+            
+            Instantiate(Fire, new Vector3(2, 0.4f, 7.5f), Quaternion.Euler(90, 0, 0));
+
+            Invoke("FireOff", 0.3f);
         }
-        Invoke("FireOff", 0.3f);
     }
     void FireOff()
     {
         Destroy(GameObject.FindGameObjectWithTag("Fire press"));
-        Debug.Log(GameObject.FindGameObjectsWithTag("Fire press").Length);
     }
 }
