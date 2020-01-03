@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         string filename = Application.dataPath + "/level.txt";
         Readfile(filename);
         MakeLevel();
+        song.Play();
     }
 
 
@@ -119,29 +120,3 @@ public class GameManager : MonoBehaviour
         }
     }
 }
-
-//Debug.Log("jup");
-/*string line = leveltext[i];
-            try
-            {
-                pos = float.Parse(line);
-            }
-            catch (FormatException)
-            {
-                Beat = line;
-            }
-            if (pos == -10 || Beat != "r" || Beat != "y" || Beat != "b")
-            {
-            }
-            else if (Beat == "r")
-            {
-                Instantiate(redBeat, new Vector3(0,0,pos), Quaternion.identity);
-            }
-            else if (Beat == "y")
-            {
-                Instantiate(yellowBeat, new Vector3(0, 0, pos), Quaternion.identity);
-            }
-            else if (Beat == "b")
-            {
-                Instantiate(blueBeat, new Vector3(0, 0, pos), Quaternion.identity);
-            }*/

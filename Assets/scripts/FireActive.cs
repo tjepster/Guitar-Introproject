@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class FireActive : MonoBehaviour
 {
+    public float Timer = 0.2f;
+    private void Update()
+    {
+        Timer -= Time.deltaTime;
 
-    // this does not work yet but the methods should start and stop the particle effect
-    public ParticleSystem fire;
-    public void StartTheFire()
-    {
-        fire.Play(true);
-    }
-    public void StopTheFire()
-    {
-        fire.Play(false);
+        if (Timer <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

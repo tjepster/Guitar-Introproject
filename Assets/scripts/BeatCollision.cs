@@ -5,13 +5,13 @@ public class BeatCollision : MonoBehaviour
 {
     // variables to indacate the current beat and if it is at the right position to be pressed
     public bool Presswindow;
-    public string CurrentBeat;
+    public GameObject CurrentBeat;
 
     // When a beat enters the trigger (Player + colour) it becomes pressable
     private void OnTriggerEnter(Collider colliderinfo)
     {
-        CurrentBeat = colliderinfo.gameObject.name;
-        if (colliderinfo.gameObject.tag == "Beat")
+        CurrentBeat = colliderinfo.gameObject;
+        if (colliderinfo.gameObject.tag == "BeatY" || colliderinfo.gameObject.tag == "BeatR" || colliderinfo.gameObject.tag == "BeatB")
         {
             Presswindow = true;
         }
@@ -21,7 +21,7 @@ public class BeatCollision : MonoBehaviour
     // It also resets the streak since a beat is missed
     private void OnTriggerExit(Collider colliderinfo)
     {
-        if (colliderinfo.gameObject.tag == "Beat")
+        if (colliderinfo.gameObject.tag == "BeatY" || colliderinfo.gameObject.tag == "BeatR" || colliderinfo.gameObject.tag == "BeatB")
         {
             Presswindow = false;
             FindObjectOfType<Streak>().streak = 0;

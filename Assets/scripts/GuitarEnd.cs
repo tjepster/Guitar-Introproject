@@ -5,9 +5,9 @@ public class GuitarEnd : MonoBehaviour
     // This method erases beats that were missed
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Beat") 
+        if (collision.gameObject.name != "Plane") 
         {
-            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject);
         }
     }
 }

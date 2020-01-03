@@ -41,7 +41,7 @@ public class PlayerAction : MonoBehaviour
         Pressed();
         if (bc.Presswindow == true)
         {
-            GameObject.Find(bc.CurrentBeat).SetActive(false);
+            GameObject.Destroy(bc.CurrentBeat);
             FindObjectOfType<Score>().score += 200;
             FindObjectOfType<Streak>().streak += 1;
             FirePress();
@@ -61,7 +61,7 @@ public class PlayerAction : MonoBehaviour
             Pressed();
             if (bc.Presswindow == true)
             {
-                GameObject.Find(bc.CurrentBeat).SetActive(false);
+                GameObject.Destroy(bc.CurrentBeat);
                 FindObjectOfType<Score>().score += 200;
                 FindObjectOfType<Streak>().streak += 1;
                 FirePress();
@@ -97,26 +97,15 @@ public class PlayerAction : MonoBehaviour
     {
         if (Colour == "red")
         {
-            
             Instantiate(Fire, new Vector3(0, 0.4f, 7.5f), Quaternion.Euler(90, 0, 0));
-            Invoke("FireOff", 0.3f);
         }
         else if (Colour == "yellow")
         {
-            
             Instantiate(Fire, new Vector3(-2, 0.4f, 7.5f), Quaternion.Euler(90, 0, 0));
-            Invoke("FireOff", 0.3f);
         }
         else if (Colour == "blue")
         {
-            
             Instantiate(Fire, new Vector3(2, 0.4f, 7.5f), Quaternion.Euler(90, 0, 0));
-
-            Invoke("FireOff", 0.3f);
         }
-    }
-    void FireOff()
-    {
-        Destroy(GameObject.FindGameObjectWithTag("Fire press"));
     }
 }
