@@ -23,7 +23,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        string filename = Application.dataPath + "/level.txt";
+        string levelname = "";
+        if (PlayerPrefs.HasKey("currentLevel"))
+        {
+            levelname = PlayerPrefs.GetString("currentLevel");
+        }
+        else
+        {
+            // error
+        }
+        string filename = Application.dataPath + "/levels/" + levelname + "/level.txt";
         Readfile(filename);
         MakeLevel();
         song.Play();
