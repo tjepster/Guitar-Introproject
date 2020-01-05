@@ -19,7 +19,7 @@ public class LevelSelectScript : MonoBehaviour
             string[] directories = Directory.GetDirectories(Application.dataPath + "/levels");
             foreach (string dir in directories)
             {
-                if(File.Exists(dir + "/level.txt"))
+                if(File.Exists(dir + "/level.txt") && File.Exists(dir + "/song.wav"))
                 {
                     string dir2 = dir.Replace(Application.dataPath + "/levels\\", "");
                     GameObject button = Instantiate(myPrefab, new Vector3(transform.position.x, transform.position.y + posy, transform.position.z), Quaternion.identity, transform);

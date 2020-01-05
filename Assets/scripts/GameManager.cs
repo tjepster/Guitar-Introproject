@@ -32,12 +32,23 @@ public class GameManager : MonoBehaviour
         {
             // error
         }
-        string filename = Application.dataPath + "/levels/" + levelname + "/level.txt";
-        Readfile(filename);
+        string foldername = Application.dataPath + "/levels/" + levelname;
+        Readfile(foldername + "/level.txt");
         MakeLevel();
-        song.Play();
-    }
+        string songlocation = "file:///" + foldername + "/song.wav";
+        StartCoroutine(LoadAudio(songlocation, song));
 
+
+    }
+ 
+    IEnumerator LoadAudio(string songlocation, AudioSource audiosource)
+    {
+        WWW URL = new WWW(songlocation);
+        yield return URL;
+
+        audiosource.clip = URL.GetAudioClip(false, true);
+        audiosource.Play();
+    }
 
     // This method is called when the esc button is pressed it can either start or stop a pause screen
     public void Pause()
