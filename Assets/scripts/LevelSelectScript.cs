@@ -19,11 +19,14 @@ public class LevelSelectScript : MonoBehaviour
             string[] directories = Directory.GetDirectories(Application.dataPath + "/levels");
             foreach (string dir in directories)
             {
-                string dir2 = dir.Replace(Application.dataPath + "/levels\\", "");
-                GameObject button = Instantiate(myPrefab, new Vector3(transform.position.x, transform.position.y + posy, transform.position.z), Quaternion.identity, transform);
-                button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(dir2);
-                button.GetComponent<Button>().onClick.AddListener(() => PlayLevel(dir2));
-                posy -= 50;
+                if(File.Exists(dir + "/level.txt"))
+                {
+                    string dir2 = dir.Replace(Application.dataPath + "/levels\\", "");
+                    GameObject button = Instantiate(myPrefab, new Vector3(transform.position.x, transform.position.y + posy, transform.position.z), Quaternion.identity, transform);
+                    button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(dir2);
+                    button.GetComponent<Button>().onClick.AddListener(() => PlayLevel(dir2));
+                    posy -= 50;
+                }
             }
             Executed = true;
         }
