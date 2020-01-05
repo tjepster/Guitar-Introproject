@@ -10,7 +10,7 @@ public class LevelSelectScript : MonoBehaviour
 {
     public GameObject myPrefab;
     bool Executed = false;
-    // This script will simply instantiate the Prefab when the game starts.
+    // This script will instantiate the Prefab when the game starts and add text and an onclick event
     public void AddText()
     {
         if (Executed == false)
