@@ -37,12 +37,20 @@ public class ScoreSetGet : MonoBehaviour
             print("There was an error posting the high score: " + hs_post.error);
         }
     }
-
+    bool executed = false;
     // Get the scores from the MySQL DB to display in a GUIText.
-    IEnumerator GetScores(string level)
+    public IEnumerator GetScores(string level)
     {
-        highscoreURL += "?level=" + level;
-        UnityWebRequest hs_get = UnityWebRequest.Get(highscoreURL);
+        if (executed == true)
+        {
+            DestroyHighscore();
+        }
+        else {
+            executed = true;
+        }
+        level = level.Replace(' ', '_');
+        string highscoreURL2 = highscoreURL + "?level=" + level;
+        UnityWebRequest hs_get = UnityWebRequest.Get(highscoreURL2);
         yield return hs_get.SendWebRequest();
         if (hs_get.isNetworkError || hs_get.isHttpError)
         {
@@ -73,6 +81,7 @@ public class ScoreSetGet : MonoBehaviour
                     RectTransform hi_text_rect = hi_text.GetComponent<RectTransform>();
                     hi_text_rect.offsetMax = new Vector2(hi_text_rect.offsetMax.x, posy);
                     hi_text.GetComponent<TextMeshProUGUI>().SetText(s);
+                    hi_text.tag = "Highscore";
                     count++;
 
                 }
@@ -80,8 +89,20 @@ public class ScoreSetGet : MonoBehaviour
 
 
         }
-
     }
+
+    //Delete the highscores if they need to be replaced
+    void DestroyHighscore() {
+        GameObject[] hi_destroy;
+
+        hi_destroy = GameObject.FindGameObjectsWithTag("Highscore");
+
+        foreach (GameObject hi in hi_destroy)
+        {
+            Destroy(hi);
+        }
+    }
+
 
     public string Md5Sum(string strToEncrypt)
     {

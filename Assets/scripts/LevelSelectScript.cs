@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class LevelSelectScript : MonoBehaviour
@@ -25,6 +26,13 @@ public class LevelSelectScript : MonoBehaviour
                     GameObject button = Instantiate(myPrefab, new Vector3(transform.position.x, transform.position.y + posy, transform.position.z), Quaternion.identity, transform);
                     button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(dir2);
                     button.GetComponent<Button>().onClick.AddListener(() => PlayLevel(dir2));
+
+                    EventTrigger.Entry eventtype = new EventTrigger.Entry();
+                    eventtype.eventID = EventTriggerType.PointerEnter;
+                    eventtype.callback.AddListener((eventData) => {StartCoroutine(gameObject.GetComponent<ScoreSetGet>().GetScores(dir2));});
+                    button.AddComponent<EventTrigger>();
+                    button.GetComponent<EventTrigger>().triggers.Add(eventtype);
+
                     posy -= 50;
                 }
             }
