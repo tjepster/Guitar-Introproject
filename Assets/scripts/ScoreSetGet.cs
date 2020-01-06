@@ -1,20 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
+using TMPro;
 
-    public class ScoreUpload : MonoBehaviour
+public class ScoreSetGet : MonoBehaviour
 {
+    public GameObject Highscoretext;
+    public GameObject Highscorescore;
+    public GameObject Parent;
     private string secretKey = "b393AqP2jNAaJdojkKLs2Jd24i4oJ5Z3k";
     public string addScoreURL = "https://www.cdprojektblue.com/scores/addscores.php";
     public string highscoreURL = "https://www.cdprojektblue.com/scores/getscores.php";
 
-    //Text to display the result on
-    // public Text statusText;
-
     void Start()
     {
-        // StartCoroutine(PostScores(name,score,level));
+        StartCoroutine(GetScores(""));
     }
 
     IEnumerator PostScores(string name, int score, string level)
@@ -36,20 +39,48 @@ using UnityEngine.Networking;
     }
 
     // Get the scores from the MySQL DB to display in a GUIText.
-    IEnumerator GetScores()
+    IEnumerator GetScores(string level)
     {
-      //  statusText.text = "Loading Scores";
-        WWW hs_get = new WWW(highscoreURL);
-        yield return hs_get;
-
-        if (hs_get.error != null)
+        highscoreURL += "?level=" + level;
+        UnityWebRequest hs_get = UnityWebRequest.Get(highscoreURL);
+        yield return hs_get.SendWebRequest();
+        if (hs_get.isNetworkError || hs_get.isHttpError)
         {
-            print("There was an error getting the high score: " + hs_get.error);
+            Debug.Log(hs_get.error);
         }
         else
         {
-      //      statusText.text = hs_get.text; // this is a GUIText that will display the scores in game.
+            // Show results as text
+            string result = hs_get.downloadHandler.text;
+            string[] results = result.Split(new Char[] { '\n' , '\t'});
+            int count = 0;
+            int posy = -110;
+            GameObject hi_text;
+            foreach (string s in results)
+            {
+                if (count < 14)
+                {
+                    if (count % 2 == 0 && count != 0)
+                    { posy -= 50; }
+                    if (count % 2 == 0)
+                    {
+                        hi_text = Instantiate(Highscoretext, new Vector3(Parent.transform.position.x, Parent.transform.position.y, Parent.transform.position.z), Quaternion.identity, Parent.transform);
+                    }
+                    else
+                    {
+                        hi_text = Instantiate(Highscorescore, new Vector3(Parent.transform.position.x, Parent.transform.position.y, Parent.transform.position.z), Quaternion.identity, Parent.transform);
+                    }
+                    RectTransform hi_text_rect = hi_text.GetComponent<RectTransform>();
+                    hi_text_rect.offsetMax = new Vector2(hi_text_rect.offsetMax.x, posy);
+                    hi_text.GetComponent<TextMeshProUGUI>().SetText(s);
+                    count++;
+
+                }
+            }
+
+
         }
+
     }
 
     public string Md5Sum(string strToEncrypt)
