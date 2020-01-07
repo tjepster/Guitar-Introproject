@@ -30,8 +30,12 @@ public class LevelSelectScript : MonoBehaviour
                     EventTrigger.Entry eventtype = new EventTrigger.Entry();
                     eventtype.eventID = EventTriggerType.PointerEnter;
                     eventtype.callback.AddListener((eventData) => {StartCoroutine(gameObject.GetComponent<ScoreSetGet>().GetScores(dir2));});
+                    EventTrigger.Entry eventtype2 = new EventTrigger.Entry();
+                    eventtype2.eventID = EventTriggerType.PointerExit;
+                    eventtype2.callback.AddListener((eventData) => { StartCoroutine(gameObject.GetComponent<ScoreSetGet>().GetScores("")); });
                     button.AddComponent<EventTrigger>();
                     button.GetComponent<EventTrigger>().triggers.Add(eventtype);
+                    button.GetComponent<EventTrigger>().triggers.Add(eventtype2);
 
                     posy -= 50;
                 }
