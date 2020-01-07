@@ -26,15 +26,15 @@ public class ScoreSetGet : MonoBehaviour
         // Supply it with a string representing the players name, players score and level.
         string hash = Md5Sum(name + score + level + secretKey);
 
-        string post_url = addScoreURL + "?name=" + WWW.EscapeURL(name) + "&score=" + score + "&level=" + level + "&hash=" + hash;
+        string post_url = addScoreURL + "?name=" + UnityWebRequest.EscapeURL(name) + "&score=" + score + "&level=" + level + "&hash=" + hash;
 
         // Post the URL to the site and create a download object to get the result.
-        WWW hs_post = new WWW(post_url);
-        yield return hs_post; // Wait until the download is done
+        UnityWebRequest hs_post = UnityWebRequest.Get(post_url);
+        yield return hs_post.SendWebRequest(); // Wait until the download is done
 
-        if (hs_post.error != null)
+        if (hs_post.isNetworkError || hs_post.isHttpError)
         {
-            print("There was an error posting the high score: " + hs_post.error);
+            Debug.Log(hs_post.error);
         }
     }
     bool executed = false;

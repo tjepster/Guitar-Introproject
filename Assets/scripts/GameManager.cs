@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using System.IO;
 using System.Linq;
@@ -43,11 +44,20 @@ public class GameManager : MonoBehaviour
  
     IEnumerator LoadAudio(string songlocation, AudioSource audiosource)
     {
-        WWW URL = new WWW(songlocation);
-        yield return URL;
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(songlocation, AudioType.WAV))
+        {
+            yield return www.SendWebRequest();
 
-        audiosource.clip = URL.GetAudioClip(false, true);
-        audiosource.Play();
+            if (www.isNetworkError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                audiosource.clip = DownloadHandlerAudioClip.GetContent(www);
+            }
+        }
+            audiosource.Play();
     }
 
     // This method is called when the esc button is pressed it can either start or stop a pause screen
