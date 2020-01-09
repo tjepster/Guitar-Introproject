@@ -26,23 +26,31 @@ public class ScoreSetGet : MonoBehaviour
         // Supply it with a string representing the players name, players score and level.
         string hash = Md5Sum(name + score + level + secretKey);
 
-        string post_url = addScoreURL + "?name=" + WWW.EscapeURL(name) + "&score=" + score + "&level=" + level + "&hash=" + hash;
+        string post_url = addScoreURL + "?name=" + UnityWebRequest.EscapeURL(name) + "&score=" + score + "&level=" + level + "&hash=" + hash;
 
         // Post the URL to the site and create a download object to get the result.
-        WWW hs_post = new WWW(post_url);
-        yield return hs_post; // Wait until the download is done
+        UnityWebRequest hs_post = UnityWebRequest.Get(post_url);
+        yield return hs_post.SendWebRequest(); // Wait until the download is done
 
-        if (hs_post.error != null)
+        if (hs_post.isNetworkError || hs_post.isHttpError)
         {
-            print("There was an error posting the high score: " + hs_post.error);
+            Debug.Log(hs_post.error);
         }
     }
-
+    bool executed = false;
     // Get the scores from the MySQL DB to display in a GUIText.
-    IEnumerator GetScores(string level)
+    public IEnumerator GetScores(string level)
     {
-        highscoreURL += "?level=" + level;
-        UnityWebRequest hs_get = UnityWebRequest.Get(highscoreURL);
+        if (executed == true)
+        {
+            DestroyHighscore();
+        }
+        else {
+            executed = true;
+        }
+        level = level.Replace(' ', '_');
+        string highscoreURL2 = highscoreURL + "?level=" + level;
+        UnityWebRequest hs_get = UnityWebRequest.Get(highscoreURL2);
         yield return hs_get.SendWebRequest();
         if (hs_get.isNetworkError || hs_get.isHttpError)
         {
@@ -73,6 +81,7 @@ public class ScoreSetGet : MonoBehaviour
                     RectTransform hi_text_rect = hi_text.GetComponent<RectTransform>();
                     hi_text_rect.offsetMax = new Vector2(hi_text_rect.offsetMax.x, posy);
                     hi_text.GetComponent<TextMeshProUGUI>().SetText(s);
+                    hi_text.tag = "Highscore";
                     count++;
 
                 }
@@ -80,8 +89,20 @@ public class ScoreSetGet : MonoBehaviour
 
 
         }
-
     }
+
+    //Delete the highscores if they need to be replaced
+    void DestroyHighscore() {
+        GameObject[] hi_destroy;
+
+        hi_destroy = GameObject.FindGameObjectsWithTag("Highscore");
+
+        foreach (GameObject hi in hi_destroy)
+        {
+            Destroy(hi);
+        }
+    }
+
 
     public string Md5Sum(string strToEncrypt)
     {

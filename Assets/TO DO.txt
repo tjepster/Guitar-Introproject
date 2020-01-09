@@ -1,0 +1,17 @@
+1.	VOICE RECOGNISION
+
+2.	het eerste level moet af (hiervoor moeten we kijken of we iets kunnen doen aan het feit dat max screen de timing anders wordt)
+
+3.	zorgvoor een loading screen
+
+4.	een optie menu
+
+5.	een end screen
+
+6.	art in een level
+
+7.	High scores weet ik niet hoe ver we zijn
+
+8.	effecten als je een streak van 4 hebt
+
+9.	credits
