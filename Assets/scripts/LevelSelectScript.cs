@@ -60,6 +60,11 @@ public class LevelSelectScript : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
+    public void GetLevel()
+    {
+        SceneManager.LoadScene("Leveleditor");
+    }
+
     public void Quit()
     {
         Debug.Log("Quit");
