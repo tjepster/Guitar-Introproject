@@ -26,7 +26,7 @@ public class ScoreSetGet : MonoBehaviour
         // Supply it with a string representing the players name, players score and level.
         string hash = Md5Sum(name + score + level + secretKey);
 
-        string post_url = addScoreURL + "?name=" + UnityWebRequest.EscapeURL(name) + "&score=" + score + "&level=" + level + "&hash=" + hash;
+        string post_url = addScoreURL + "?name=" + UnityWebRequest.EscapeURL(name) + "&score=" + score + "&level=" + UnityWebRequest.EscapeURL(level) + "&hash=" + hash;
 
         // Post the URL to the site and create a download object to get the result.
         UnityWebRequest hs_post = UnityWebRequest.Get(post_url);
