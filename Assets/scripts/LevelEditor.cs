@@ -11,6 +11,9 @@ public class LevelEditor : MonoBehaviour
     public GameObject YellowPrefab;
     public GameObject RedPrefab;
     public GameObject BluePrefab;
+    public GameObject ContentView;
+    public GameObject AudioBar;
+
     public AudioSource song;
 
 
@@ -40,5 +43,10 @@ public class LevelEditor : MonoBehaviour
     public void OnEditorClick() {
 
     }
-    
+
+    public void AddAudio() {
+
+        StartCoroutine(ImportAudio("songlocation",song));
+
+    }
 }
