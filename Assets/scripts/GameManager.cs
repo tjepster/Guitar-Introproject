@@ -167,4 +167,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         song.Pause();
     }
+
+    // Restarts the level
+    public void Restart()
+    {
+        GameIsPaused = false;
+        Time.timeScale = 1;
+        song.Stop();
+        pauseMenu.SetActive(false);
+        SceneManager.LoadScene("level 1");
+    }
 }
