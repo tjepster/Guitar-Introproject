@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8805350559935434207}
   - component: {fileID: 1493381330974215264}
   - component: {fileID: 2922893906715610109}
-  - component: {fileID: 5174682004760456131}
+  - component: {fileID: 4582475016681123766}
   m_Layer: 0
   m_Name: song end
   m_TagString: Finish
@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8658354977091552379}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -109,7 +109,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &5174682004760456131
+--- !u!114 &4582475016681123766
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,4 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2922893906715610109}
-  speed: 10
+  speed: 100
