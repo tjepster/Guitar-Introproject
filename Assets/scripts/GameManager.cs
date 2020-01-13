@@ -15,10 +15,12 @@ public class GameManager : MonoBehaviour
     public static bool GameIsPaused = false;
     public AudioSource song;
     public GameObject pauseMenu;
+    public GameObject EndScreen;
 
     public GameObject redBeat;
     public GameObject blueBeat;
     public GameObject yellowBeat;
+    public GameObject SongEnd;
 
     public List<string> levelStringList = new List<string>();
 
@@ -131,7 +133,7 @@ public class GameManager : MonoBehaviour
                 Beat = line;
                 Ispos = false;
             }
-            if (Beat != "r" && Beat != "y" && Beat != "b")
+            if (Beat != "r" && Beat != "y" && Beat != "b" && Beat == "End")
             {
 
             }
@@ -147,6 +149,16 @@ public class GameManager : MonoBehaviour
             {
                 Instantiate(blueBeat, new Vector3(2, 0.25f, pos), Quaternion.identity);
             }
+            else if (Beat == "end" && Ispos)
+            {
+                Instantiate(SongEnd, new Vector3(0, 0.5f, pos), Quaternion.identity);
+            }
         }
+    }
+    public void EndGame()
+    {
+        EndScreen.SetActive(true);
+        Time.timeScale = 0;
+        song.Pause();
     }
 }
