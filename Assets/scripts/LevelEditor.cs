@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class LevelEditor : MonoBehaviour
 {
@@ -13,9 +14,8 @@ public class LevelEditor : MonoBehaviour
     public GameObject BluePrefab;
     public GameObject ContentView;
     public GameObject AudioBar;
-
+    public GameObject InputField;
     public AudioSource song;
-
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +35,15 @@ public class LevelEditor : MonoBehaviour
             else
             {
                 audiosource.clip = DownloadHandlerAudioClip.GetContent(www);
+                float songlength = audiosource.clip.length;
+                SetWidth(songlength);
             }
         }
-        audiosource.Play();
+       }
+
+    void SetWidth(float songlength) {
+        RectTransform rt = ContentView.GetComponent<RectTransform>();
+        rt.offsetMax = new Vector2(songlength * 120 - 648, rt.offsetMax.y);
     }
 
     public void OnEditorClick() {
@@ -45,8 +51,8 @@ public class LevelEditor : MonoBehaviour
     }
 
     public void AddAudio() {
-
-        StartCoroutine(ImportAudio("songlocation",song));
+        string songlocation = InputField.GetComponent<TMP_InputField>().text;
+        StartCoroutine(ImportAudio(songlocation,song));
 
     }
 }
