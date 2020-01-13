@@ -11,6 +11,8 @@ public class ScoreSetGet : MonoBehaviour
     public GameObject Highscoretext;
     public GameObject Highscorescore;
     public GameObject Parent;
+    public GameObject InputField;
+
     private string secretKey = "b393AqP2jNAaJdojkKLs2Jd24i4oJ5Z3k";
 
     public void GetHighscores()
@@ -18,6 +20,21 @@ public class ScoreSetGet : MonoBehaviour
         StartCoroutine(GetScores(""));
     }
 
+    public void SetHighscores()
+    {
+        int score = Int32.Parse(Highscorescore.GetComponent<TextMeshProUGUI>().text);
+        string name = InputField.GetComponent<TMP_InputField>().text;
+        string level = "";
+        if (PlayerPrefs.HasKey("currentLevel"))
+        {
+            level = PlayerPrefs.GetString("currentLevel");
+        }
+        else
+        {
+            // error
+        }
+        StartCoroutine(PostScores(name,score,level));
+    }
     IEnumerator PostScores(string name, int score, string level)
     {
         string addScoreURL = "https://www.cdprojektblue.com/scores/addscores.php";

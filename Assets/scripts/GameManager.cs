@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using TMPro;
 using System.IO;
 using System.Linq;
 using System;
@@ -21,6 +23,10 @@ public class GameManager : MonoBehaviour
     public GameObject blueBeat;
     public GameObject yellowBeat;
     public GameObject SongEnd;
+
+    public GameObject GameScore;
+    public GameObject EndScore;
+
 
     public List<string> levelStringList = new List<string>();
 
@@ -171,6 +177,8 @@ public class GameManager : MonoBehaviour
         EndScreen.SetActive(true);
         Time.timeScale = 0;
         song.Pause();
+        EndScore.GetComponent<TextMeshProUGUI>().text = GameScore.GetComponent<Text>().text.Replace("Score ","");
+
     }
 
     // Restarts the level
