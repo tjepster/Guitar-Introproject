@@ -93,6 +93,7 @@ public class PlayerAction : MonoBehaviour
         scale.localPosition += new Vector3(0, 0.05f, 0);
     }
 
+    // Here a fire is instantiated on the player button if a correct hit is scored the fires destroy themselfs
     void FirePress()
     {
         if (Colour == "red")
