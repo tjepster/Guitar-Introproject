@@ -14,6 +14,7 @@ public class LevelSelectScript : MonoBehaviour
     // This script will instantiate the Prefab when the game starts and add text and an onclick event
     public void AddText()
     {
+        //only execute once
         if (Executed == false)
         {
             int posy = 80;
@@ -48,6 +49,7 @@ public class LevelSelectScript : MonoBehaviour
                     button.GetComponent<EventTrigger>().triggers.Add(eventtype);
                     button.GetComponent<EventTrigger>().triggers.Add(eventtype2);
 
+                    //lower the position y value so the next button will be under this button
                     posy -= 50;
                 }
             }
@@ -56,7 +58,9 @@ public class LevelSelectScript : MonoBehaviour
     }
     public void PlayLevel(string level)
     {
+        //Sets the currentlevel value in the playerprefs file to the current level in order to get this value in the game
         PlayerPrefs.SetString("currentLevel", level);
+        //loads the main game
         SceneManager.LoadScene("Level 1");
     }
 

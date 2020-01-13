@@ -47,7 +47,23 @@ public class LevelEditor : MonoBehaviour
     }
 
     public void OnEditorClick() {
-
+        Vector3 vector3 = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1);
+        Vector3 mouseposition = Camera.main.ScreenToWorldPoint(vector3);
+        if (mouseposition.x < 0.95 && mouseposition.x > -0.63)
+        {
+            if (mouseposition.y > 0.45 && mouseposition.y < 0.79)
+            {
+                Debug.Log(1);
+            }
+            else if (mouseposition.y > 0.81 && mouseposition.y < 1.14)
+            {
+                Debug.Log(2);
+            }
+            else if (mouseposition.y > 1.165 && mouseposition.y < 1.52)
+            {
+                Debug.Log(3);
+            }
+        }
     }
 
     public void AddAudio() {
