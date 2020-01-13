@@ -10,5 +10,6 @@ public class Movement : MonoBehaviour
     void Start()
     {
         rb.AddForce(0, 0, -speed, ForceMode.VelocityChange);
+        Debug.Log("ok");
     }
 }
