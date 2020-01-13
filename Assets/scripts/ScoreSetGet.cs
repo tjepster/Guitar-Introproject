@@ -12,16 +12,16 @@ public class ScoreSetGet : MonoBehaviour
     public GameObject Highscorescore;
     public GameObject Parent;
     private string secretKey = "b393AqP2jNAaJdojkKLs2Jd24i4oJ5Z3k";
-    public string addScoreURL = "https://www.cdprojektblue.com/scores/addscores.php";
-    public string highscoreURL = "https://www.cdprojektblue.com/scores/getscores.php";
 
-    void Start()
+    public void GetHighscores()
     {
         StartCoroutine(GetScores(""));
     }
 
     IEnumerator PostScores(string name, int score, string level)
     {
+        string addScoreURL = "https://www.cdprojektblue.com/scores/addscores.php";
+
         //This connects to a server side php script that will add the name, score and level to a MySQL DB.
         // Supply it with a string representing the players name, players score and level.
         string hash = Md5Sum(name + score + level + secretKey);
@@ -41,6 +41,8 @@ public class ScoreSetGet : MonoBehaviour
     // Get the scores from the MySQL DB to display in a GUIText.
     public IEnumerator GetScores(string level)
     {
+        string highscoreURL = "https://www.cdprojektblue.com/scores/getscores.php";
+
         if (executed == true)
         {
             DestroyHighscore();

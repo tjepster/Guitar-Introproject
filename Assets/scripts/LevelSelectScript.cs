@@ -10,6 +10,7 @@ using TMPro;
 public class LevelSelectScript : MonoBehaviour
 {
     public GameObject myPrefab;
+    public GameObject MainCamera;
     bool Executed = false;
     // This script will instantiate the Prefab when the game starts and add text and an onclick event
     public void AddText()
@@ -39,10 +40,10 @@ public class LevelSelectScript : MonoBehaviour
                     //and displaying the main highscores when not hovering over the button anymore
                     EventTrigger.Entry eventtype = new EventTrigger.Entry();
                     eventtype.eventID = EventTriggerType.PointerEnter;
-                    eventtype.callback.AddListener((eventData) => {StartCoroutine(gameObject.GetComponent<ScoreSetGet>().GetScores(dir2));});
+                    eventtype.callback.AddListener((eventData) => {StartCoroutine(MainCamera.GetComponent<ScoreSetGet>().GetScores(dir2));});
                     EventTrigger.Entry eventtype2 = new EventTrigger.Entry();
                     eventtype2.eventID = EventTriggerType.PointerExit;
-                    eventtype2.callback.AddListener((eventData) => { StartCoroutine(gameObject.GetComponent<ScoreSetGet>().GetScores("")); });
+                    eventtype2.callback.AddListener((eventData) => { StartCoroutine(MainCamera.GetComponent<ScoreSetGet>().GetScores("")); });
 
                     //add the eventtriggers to the button
                     button.AddComponent<EventTrigger>();

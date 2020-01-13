@@ -235,6 +235,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 796305300}
+        m_MethodName: GetHighscores
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &123786160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,7 +416,6 @@ GameObject:
   m_Component:
   - component: {fileID: 319541157}
   - component: {fileID: 319541158}
-  - component: {fileID: 319541159}
   m_Layer: 5
   m_Name: LevelSelect
   m_TagString: Untagged
@@ -448,25 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myPrefab: {fileID: 7168358977245975964, guid: da7794d83ebd98345b454db32d03519b,
     type: 3}
---- !u!114 &319541159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 319541156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c03121c516b4be940a2fbbf60e750bb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Highscoretext: {fileID: 2572064844239829864, guid: 8256eaadb60fba940b34f9d4a807202f,
-    type: 3}
-  Highscorescore: {fileID: 2874148604376748183, guid: d062787ffe13a3040addc738e1c73244,
-    type: 3}
-  Parent: {fileID: 2030243945}
-  addScoreURL: https://www.cdprojektblue.com/scores/addscores.php
-  highscoreURL: https://www.cdprojektblue.com/scores/getscores.php
+  MainCamera: {fileID: 796305296}
 --- !u!1 &417715139
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,6 +928,7 @@ GameObject:
   - component: {fileID: 796305299}
   - component: {fileID: 796305298}
   - component: {fileID: 796305297}
+  - component: {fileID: 796305300}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1007,6 +1000,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &796305300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796305296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c03121c516b4be940a2fbbf60e750bb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Highscoretext: {fileID: 2572064844239829864, guid: 8256eaadb60fba940b34f9d4a807202f,
+    type: 3}
+  Highscorescore: {fileID: 2874148604376748183, guid: d062787ffe13a3040addc738e1c73244,
+    type: 3}
+  Parent: {fileID: 2030243945}
+  addScoreURL: https://www.cdprojektblue.com/scores/addscores.php
+  highscoreURL: https://www.cdprojektblue.com/scores/getscores.php
 --- !u!1 &1145364366
 GameObject:
   m_ObjectHideFlags: 0
