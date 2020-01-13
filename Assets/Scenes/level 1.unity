@@ -1044,11 +1044,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2037213629}
     m_Modifications:
-    - target: {fileID: 1484903082257953204, guid: d308c2654ef292f42900952c5b8b0998,
-        type: 3}
-      propertyPath: m_Name
-      value: Player blue
-      objectReference: {fileID: 0}
     - target: {fileID: 1484903082257953194, guid: d308c2654ef292f42900952c5b8b0998,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1119,6 +1114,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1484903082257953204, guid: d308c2654ef292f42900952c5b8b0998,
+        type: 3}
+      propertyPath: m_Name
+      value: Player blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484903082257953206, guid: d308c2654ef292f42900952c5b8b0998,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1833039217}
     - target: {fileID: 1484903082257953207, guid: d308c2654ef292f42900952c5b8b0998,
         type: 3}
       propertyPath: streak
@@ -1129,11 +1134,6 @@ PrefabInstance:
       propertyPath: score
       value: 
       objectReference: {fileID: 1131771218}
-    - target: {fileID: 1484903082257953206, guid: d308c2654ef292f42900952c5b8b0998,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1833039217}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d308c2654ef292f42900952c5b8b0998, type: 3}
 --- !u!4 &933837677 stripped
@@ -1149,11 +1149,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7606268137679630508, guid: f54bc4d692c41ab4b934ddda054ac106,
-        type: 3}
-      propertyPath: m_Name
-      value: End
-      objectReference: {fileID: 0}
     - target: {fileID: 7606268137679630504, guid: f54bc4d692c41ab4b934ddda054ac106,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1209,6 +1204,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7606268137679630508, guid: f54bc4d692c41ab4b934ddda054ac106,
+        type: 3}
+      propertyPath: m_Name
+      value: End
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f54bc4d692c41ab4b934ddda054ac106, type: 3}
 --- !u!1001 &1017018520
@@ -1218,11 +1218,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2037213629}
     m_Modifications:
-    - target: {fileID: 7104493097842373864, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
-        type: 3}
-      propertyPath: m_Name
-      value: Player red
-      objectReference: {fileID: 0}
     - target: {fileID: 7104493097842373861, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
         type: 3}
       propertyPath: m_Mesh
@@ -1297,6 +1292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104493097842373864, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
+        type: 3}
+      propertyPath: m_Name
+      value: Player red
       objectReference: {fileID: 0}
     - target: {fileID: 7104493097842373865, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
         type: 3}
@@ -2125,7 +2125,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1528503634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2265,8 +2265,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.60784316}
+    m_NormalColor: {r: 0, g: 0, b: 0, a: 0}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.3137255}
     m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -2309,7 +2309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2616,11 +2616,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2037213629}
     m_Modifications:
-    - target: {fileID: 7816123850930350606, guid: f44013a37724d3340b3e092cfe75b03a,
-        type: 3}
-      propertyPath: m_Name
-      value: Player yellow
-      objectReference: {fileID: 0}
     - target: {fileID: 7816123850930350592, guid: f44013a37724d3340b3e092cfe75b03a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2691,6 +2686,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7816123850930350604, guid: f44013a37724d3340b3e092cfe75b03a,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1833039217}
+    - target: {fileID: 7816123850930350606, guid: f44013a37724d3340b3e092cfe75b03a,
+        type: 3}
+      propertyPath: m_Name
+      value: Player yellow
+      objectReference: {fileID: 0}
     - target: {fileID: 7816123850930350607, guid: f44013a37724d3340b3e092cfe75b03a,
         type: 3}
       propertyPath: streak
@@ -2701,11 +2706,6 @@ PrefabInstance:
       propertyPath: score
       value: 
       objectReference: {fileID: 1131771218}
-    - target: {fileID: 7816123850930350604, guid: f44013a37724d3340b3e092cfe75b03a,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1833039217}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f44013a37724d3340b3e092cfe75b03a, type: 3}
 --- !u!4 &2022839750 stripped
