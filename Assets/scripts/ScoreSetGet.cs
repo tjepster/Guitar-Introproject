@@ -12,6 +12,8 @@ public class ScoreSetGet : MonoBehaviour
     public GameObject Highscorescore;
     public GameObject Parent;
     public GameObject InputField;
+    public GameObject StatusText;
+
 
     private string secretKey = "b393AqP2jNAaJdojkKLs2Jd24i4oJ5Z3k";
 
@@ -37,6 +39,7 @@ public class ScoreSetGet : MonoBehaviour
     }
     IEnumerator PostScores(string name, int score, string level)
     {
+        StatusText.SetActive(true);
         string addScoreURL = "https://www.cdprojektblue.com/scores/addscores.php";
 
         //This connects to a server side php script that will add the name, score and level to a MySQL DB.
@@ -44,14 +47,17 @@ public class ScoreSetGet : MonoBehaviour
         string hash = Md5Sum(name + score + level + secretKey);
 
         string post_url = addScoreURL + "?name=" + UnityWebRequest.EscapeURL(name) + "&score=" + score + "&level=" + UnityWebRequest.EscapeURL(level) + "&hash=" + hash;
-
         // Post the URL to the site and create a download object to get the result.
         UnityWebRequest hs_post = UnityWebRequest.Get(post_url);
         yield return hs_post.SendWebRequest(); // Wait until the download is done
+        StatusText.GetComponent<TextMeshProUGUI>().text = "testtest";
 
         if (hs_post.isNetworkError || hs_post.isHttpError)
         {
-            Debug.Log(hs_post.error);
+            StatusText.GetComponent<TextMeshProUGUI>().text = "Error: " + hs_post.error;
+        }
+        else {
+            StatusText.GetComponent<TextMeshProUGUI>().text = "Highscore uploaded!";
         }
     }
     bool executed = false;
