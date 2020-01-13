@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    // Here we read the level file and make it into a list of strings
     private void Readfile(string filename)
     {
         StreamReader reader = new StreamReader(filename);
@@ -115,6 +116,9 @@ public class GameManager : MonoBehaviour
         }
         reader.Close();
     }
+
+    // Here we use the list of strings to make the level
+    // We do this by checking if the line had a number or a sign if it is a number we use that as a coörtdinate to instantiate the right object. A letter or word indacates we need to switch to instantiating another object.
     void MakeLevel()
     {
         float pos = 0;
@@ -155,6 +159,8 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    // When the endsong objects collides with the playerobjects the level is over and an endscreen pops up
     public void EndGame()
     {
         EndScreen.SetActive(true);

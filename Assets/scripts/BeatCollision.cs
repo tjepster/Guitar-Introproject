@@ -17,6 +17,8 @@ public class BeatCollision : MonoBehaviour
         {
             Presswindow = true;
         }
+
+        // If the finish Ojbect gets to the player buttons the game goes into an endscreen
         if (colliderinfo.gameObject.tag == "Finish")
         {
             gameManager.EndGame();
