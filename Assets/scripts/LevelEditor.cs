@@ -69,8 +69,17 @@ public class LevelEditor : MonoBehaviour
     private void OnContentClick(int colour)
     {
         Vector3 mouseposition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1);
-        float left = ContentView.GetComponent<RectTransform>().rect.size.x * scrollbar.GetComponent<Scrollbar>().value + mouseposition.x - (Viewport.transform.position.x - Viewport.GetComponent<RectTransform>().rect.size.x / 2);
-        Debug.Log(Viewport.transform.position.x - Viewport.GetComponent<RectTransform>().rect.size.x / 2);
+        float left = ContentView.GetComponent<RectTransform>().rect.size.x * scrollbar.GetComponent<Scrollbar>().value + mouseposition.x - Viewport.transform.position.x;
+        Debug.Log(left);
+        if (colour == 1)
+        {
+            GameObject YellowCircle = Instantiate(YellowPrefab, new Vector3(left, 0, ContentView.GetComponent<RectTransform>().position.z), Quaternion.identity, ContentView.transform);
+
+        }
+        else if (colour == 2)
+        { }
+        else if (colour == 3)
+        { }
     }
     public void AddAudio() {
         string songlocation = InputField.GetComponent<TMP_InputField>().text;

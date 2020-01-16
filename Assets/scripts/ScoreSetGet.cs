@@ -13,13 +13,24 @@ public class ScoreSetGet : MonoBehaviour
     public GameObject Parent;
     public GameObject InputField;
     public GameObject StatusText;
-
+    private bool busy = false;
 
     private string secretKey = "b393AqP2jNAaJdojkKLs2Jd24i4oJ5Z3k";
 
     public void GetHighscores()
     {
-        StartCoroutine(GetScores(""));
+        if (busy == false)
+        {
+            StartCoroutine(GetScores(""));
+        }
+    }
+
+    public void GetHighscoresbylevel(string level)
+    {
+        if (busy == false)
+        {
+            StartCoroutine(GetScores(level));
+        }
     }
 
     public void SetHighscores()
@@ -65,7 +76,7 @@ public class ScoreSetGet : MonoBehaviour
     public IEnumerator GetScores(string level)
     {
         string highscoreURL = "https://www.cdprojektblue.com/scores/getscores.php";
-
+        busy = true;
         if (executed == true)
         {
             DestroyHighscore();
@@ -114,6 +125,7 @@ public class ScoreSetGet : MonoBehaviour
 
 
         }
+        busy = false;
     }
 
     //Delete the highscores if they need to be replaced
