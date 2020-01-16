@@ -18,6 +18,10 @@ public class LevelEditor : MonoBehaviour
     public GameObject AudioLine;
     public GameObject InputField;
     public GameObject scrollbar;
+    public GameObject YellowButton;
+    public GameObject RedButton;
+    public GameObject BlueButton;
+
     public AudioSource song;
 
     // Start is called before the first frame update
@@ -69,11 +73,14 @@ public class LevelEditor : MonoBehaviour
     private void OnContentClick(int colour)
     {
         Vector3 mouseposition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1);
-        float left = ContentView.GetComponent<RectTransform>().rect.size.x * scrollbar.GetComponent<Scrollbar>().value + mouseposition.x - Viewport.transform.position.x;
+        float left = ContentView.GetComponent<RectTransform>().rect.size.x * scrollbar.GetComponent<Scrollbar>().value + mouseposition.x;
         Debug.Log(left);
         if (colour == 1)
         {
-            GameObject YellowCircle = Instantiate(YellowPrefab, new Vector3(left, 0, ContentView.GetComponent<RectTransform>().position.z), Quaternion.identity, ContentView.transform);
+            GameObject YellowCircle = Instantiate(YellowPrefab, new Vector3(left, 0, YellowButton.transform.position.z), Quaternion.identity, YellowButton.transform);
+            YellowCircle.GetComponent<RectTransform>().offsetMax = new Vector2(YellowCircle.GetComponent<RectTransform>().offsetMax.x, 0);
+            YellowCircle.GetComponent<RectTransform>().offsetMin = new Vector2(YellowCircle.GetComponent<RectTransform>().offsetMin.x, 0);
+
 
         }
         else if (colour == 2)
