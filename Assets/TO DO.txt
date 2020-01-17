@@ -1,17 +1,17 @@
-1.	VOICE RECOGNISION
+1.	VOICE RECOGNISION	(Vos || Evan)
 
-2.	het eerste level moet af (hiervoor moeten we kijken of we iets kunnen doen aan het feit dat max screen de timing anders wordt)
+2.	het eerste level moet af	(Jeppe?)
 
-3.	zorgvoor een loading screen
+3.	zorgvoor een loading screen		(?)
 
-4.	een optie menu
+4.	een optie menu		(Jeppe)
 
-5.	een end screen
+5.	een end screen		(?)
 
-6.	art in een level
+6.	art in een level	(William)
 
-7.	High scores weet ik niet hoe ver we zijn
+7.	High scores weet ik niet hoe ver we zijn	(Koen)
 
-8.	effecten als je een streak van 4 hebt
+8.	effecten als je een streak van 4 hebt		(?)
 
-9.	credits
+9.	credits		(?)

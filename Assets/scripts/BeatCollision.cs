@@ -7,6 +7,8 @@ public class BeatCollision : MonoBehaviour
     public bool Presswindow;
     public GameObject CurrentBeat;
 
+    public GameManager gameManager;
+
     // When a beat enters the trigger (Player + colour) it becomes pressable
     private void OnTriggerEnter(Collider colliderinfo)
     {
@@ -14,6 +16,13 @@ public class BeatCollision : MonoBehaviour
         if (colliderinfo.gameObject.tag == "BeatY" || colliderinfo.gameObject.tag == "BeatR" || colliderinfo.gameObject.tag == "BeatB")
         {
             Presswindow = true;
+        }
+
+        // If the finish Ojbect gets to the player buttons the game goes into an endscreen
+        if (colliderinfo.gameObject.tag == "Finish")
+        {
+            gameManager.EndGame();
+            GameObject.Destroy(CurrentBeat);
         }
     }
 

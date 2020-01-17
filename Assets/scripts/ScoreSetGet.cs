@@ -11,36 +11,72 @@ public class ScoreSetGet : MonoBehaviour
     public GameObject Highscoretext;
     public GameObject Highscorescore;
     public GameObject Parent;
-    private string secretKey = "b393AqP2jNAaJdojkKLs2Jd24i4oJ5Z3k";
-    public string addScoreURL = "https://www.cdprojektblue.com/scores/addscores.php";
-    public string highscoreURL = "https://www.cdprojektblue.com/scores/getscores.php";
+    public GameObject InputField;
+    public GameObject StatusText;
+    private bool busy = false;
 
-    void Start()
+    private string secretKey = "b393AqP2jNAaJdojkKLs2Jd24i4oJ5Z3k";
+
+    public void GetHighscores()
     {
-        StartCoroutine(GetScores(""));
+        if (busy == false)
+        {
+            StartCoroutine(GetScores(""));
+        }
     }
 
+    public void GetHighscoresbylevel(string level)
+    {
+        if (busy == false)
+        {
+            StartCoroutine(GetScores(level));
+        }
+    }
+
+    public void SetHighscores()
+    {
+        int score = Int32.Parse(Highscorescore.GetComponent<TextMeshProUGUI>().text);
+        string name = InputField.GetComponent<TMP_InputField>().text;
+        string level = "";
+        if (PlayerPrefs.HasKey("currentLevel"))
+        {
+            level = PlayerPrefs.GetString("currentLevel");
+        }
+        else
+        {
+            // error
+        }
+        StartCoroutine(PostScores(name,score,level));
+    }
     IEnumerator PostScores(string name, int score, string level)
     {
+        StatusText.SetActive(true);
+        string addScoreURL = "https://www.cdprojektblue.com/scores/addscores.php";
+
         //This connects to a server side php script that will add the name, score and level to a MySQL DB.
         // Supply it with a string representing the players name, players score and level.
         string hash = Md5Sum(name + score + level + secretKey);
 
-        string post_url = addScoreURL + "?name=" + UnityWebRequest.EscapeURL(name) + "&score=" + score + "&level=" + level + "&hash=" + hash;
-
+        string post_url = addScoreURL + "?name=" + UnityWebRequest.EscapeURL(name) + "&score=" + score + "&level=" + UnityWebRequest.EscapeURL(level) + "&hash=" + hash;
         // Post the URL to the site and create a download object to get the result.
         UnityWebRequest hs_post = UnityWebRequest.Get(post_url);
         yield return hs_post.SendWebRequest(); // Wait until the download is done
+        StatusText.GetComponent<TextMeshProUGUI>().text = "testtest";
 
         if (hs_post.isNetworkError || hs_post.isHttpError)
         {
-            Debug.Log(hs_post.error);
+            StatusText.GetComponent<TextMeshProUGUI>().text = "Error: " + hs_post.error;
+        }
+        else {
+            StatusText.GetComponent<TextMeshProUGUI>().text = "Highscore uploaded!";
         }
     }
     bool executed = false;
     // Get the scores from the MySQL DB to display in a GUIText.
     public IEnumerator GetScores(string level)
     {
+        string highscoreURL = "https://www.cdprojektblue.com/scores/getscores.php";
+        busy = true;
         if (executed == true)
         {
             DestroyHighscore();
@@ -89,6 +125,7 @@ public class ScoreSetGet : MonoBehaviour
 
 
         }
+        busy = false;
     }
 
     //Delete the highscores if they need to be replaced
