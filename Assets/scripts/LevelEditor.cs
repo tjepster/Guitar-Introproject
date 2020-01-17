@@ -14,6 +14,7 @@ public class LevelEditor : MonoBehaviour
     public GameObject BluePrefab;
     public GameObject ContentView;
     public GameObject Viewport;
+    public GameObject Canvas;
     public GameObject AudioBar;
     public GameObject AudioLine;
     public GameObject InputField;
@@ -72,9 +73,9 @@ public class LevelEditor : MonoBehaviour
 
     private void OnContentClick(int colour)
     {
-        float left = (ContentView.GetComponent<RectTransform>().rect.size.x - Viewport.GetComponent<RectTransform>().rect.size.x) * scrollbar.GetComponent<Scrollbar>().value + Input.mousePosition.x - Viewport.transform.position.x;
-        Debug.Log(left);
-        Debug.Log(Viewport.transform.position.x);
+        float mouseposition = Input.mousePosition.x * Canvas.GetComponent<CanvasScaler>().referenceResolution.x / Screen.width;
+        float left = (ContentView.GetComponent<RectTransform>().rect.size.x - Viewport.GetComponent<RectTransform>().rect.size.x) * scrollbar.GetComponent<Scrollbar>().value + mouseposition - Viewport.transform.position.x;
+        Debug.Log(mouseposition);
         if (colour == 1)
         {
             GameObject YellowCircle = Instantiate(YellowPrefab, new Vector3(0, 0, YellowButton.transform.position.z), Quaternion.identity, YellowButton.transform);
