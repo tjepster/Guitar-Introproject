@@ -72,14 +72,14 @@ public class LevelEditor : MonoBehaviour
 
     private void OnContentClick(int colour)
     {
-        Vector3 mouseposition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1);
-        float left = ContentView.GetComponent<RectTransform>().rect.size.x * scrollbar.GetComponent<Scrollbar>().value + mouseposition.x;
+        float left = (ContentView.GetComponent<RectTransform>().rect.size.x - Viewport.GetComponent<RectTransform>().rect.size.x) * scrollbar.GetComponent<Scrollbar>().value + Input.mousePosition.x - Viewport.transform.position.x;
         Debug.Log(left);
+        Debug.Log(Viewport.transform.position.x);
         if (colour == 1)
         {
-            GameObject YellowCircle = Instantiate(YellowPrefab, new Vector3(left, 0, YellowButton.transform.position.z), Quaternion.identity, YellowButton.transform);
-            YellowCircle.GetComponent<RectTransform>().offsetMax = new Vector2(YellowCircle.GetComponent<RectTransform>().offsetMax.x, 0);
-            YellowCircle.GetComponent<RectTransform>().offsetMin = new Vector2(YellowCircle.GetComponent<RectTransform>().offsetMin.x, 0);
+            GameObject YellowCircle = Instantiate(YellowPrefab, new Vector3(0, 0, YellowButton.transform.position.z), Quaternion.identity, YellowButton.transform);
+            YellowCircle.GetComponent<RectTransform>().offsetMax = new Vector2((-(ContentView.GetComponent<RectTransform>().rect.size.x - left - 60)), 0);
+            YellowCircle.GetComponent<RectTransform>().offsetMin = new Vector2(left - 60, 0);
 
 
         }
