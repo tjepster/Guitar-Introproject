@@ -13,7 +13,6 @@ public class LevelEditor : MonoBehaviour
     public GameObject RedPrefab;
     public GameObject BluePrefab;
     public GameObject Viewport;
-    public GameObject Canvas;
     public GameObject AudioBar;
     public GameObject AudioLine;
     public GameObject InputField;
@@ -72,26 +71,26 @@ public class LevelEditor : MonoBehaviour
 
     private void OnContentClick(int colour)
     {
-        float mousepos = (Viewport.GetComponentInChildren<RectTransform>().rect.size.x - Viewport.GetComponent<RectTransform>().rect.size.x) * scrollbar.GetComponent<Scrollbar>().value + 1.15f * (Input.mousePosition.x - Viewport.transform.position.x + 35);
+        float mousepos = (Viewport.GetComponentInChildren<RectTransform>().rect.size.x - Viewport.GetComponent<RectTransform>().rect.size.x) * scrollbar.GetComponent<Scrollbar>().value + 1.15f * (Input.mousePosition.x - 25);
         int left = (int)mousepos / 120;
-        left *= 120;
+        mousepos = 120 * left - Viewport.transform.position.x + 60;
         if (colour == 1)
         {
             GameObject Circle = Instantiate(YellowPrefab, new Vector3(0, 0, YellowButton.transform.position.z), Quaternion.identity, YellowButton.transform);
-            Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(Viewport.GetComponentInChildren<RectTransform>().rect.size.x - left - 60)), 0);
-            Circle.GetComponent<RectTransform>().offsetMin = new Vector2(left - 60, 0);
+            Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(Viewport.GetComponentInChildren<RectTransform>().rect.size.x - mousepos - 60)), 0);
+            Circle.GetComponent<RectTransform>().offsetMin = new Vector2(mousepos - 60, 0);
         }
         else if (colour == 2)
         {
             GameObject Circle = Instantiate(RedPrefab, new Vector3(0, 0, RedButton.transform.position.z), Quaternion.identity, RedButton.transform);
-            Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(Viewport.GetComponentInChildren<RectTransform>().rect.size.x - left - 60)), 0);
-            Circle.GetComponent<RectTransform>().offsetMin = new Vector2(left - 60, 0);
+            Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(Viewport.GetComponentInChildren<RectTransform>().rect.size.x - mousepos - 60)), 0);
+            Circle.GetComponent<RectTransform>().offsetMin = new Vector2(mousepos - 60, 0);
         }
         else if (colour == 3)
         {
             GameObject Circle = Instantiate(BluePrefab, new Vector3(0, 0, BlueButton.transform.position.z), Quaternion.identity, BlueButton.transform);
-            Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(Viewport.GetComponentInChildren<RectTransform>().rect.size.x - left - 60)), 0);
-            Circle.GetComponent<RectTransform>().offsetMin = new Vector2(left - 60, 0);
+            Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(Viewport.GetComponentInChildren<RectTransform>().rect.size.x - mousepos - 60)), 0);
+            Circle.GetComponent<RectTransform>().offsetMin = new Vector2(mousepos - 60, 0);
         }
        
     }
