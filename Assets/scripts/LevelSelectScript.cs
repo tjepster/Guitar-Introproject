@@ -10,7 +10,6 @@ using TMPro;
 public class LevelSelectScript : MonoBehaviour
 {
     public GameObject myPrefab;
-    public GameObject LevelLoader;
     bool Executed = false;
     // This script will instantiate the Prefab when the game starts and add text and an onclick event
     public void AddText()
@@ -28,9 +27,6 @@ public class LevelSelectScript : MonoBehaviour
 
                     //create button
                     GameObject button = Instantiate(myPrefab, new Vector3(transform.position.x, transform.position.y + posy, transform.position.z), Quaternion.identity, transform);
-
-                    //create levelloader
-                    Instantiate(LevelLoader, new Vector3(0, 0, 0), Quaternion.identity);
 
                     //set the text of the button to the name of the level
                     button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(dir2);
