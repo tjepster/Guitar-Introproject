@@ -21,7 +21,6 @@ public class LevelEditor : MonoBehaviour
     public GameObject YellowButton;
     public GameObject RedButton;
     public GameObject BlueButton;
-
     public AudioSource song;
 
     // Start is called before the first frame update
@@ -100,7 +99,6 @@ public class LevelEditor : MonoBehaviour
             Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(Content.GetComponent<RectTransform>().rect.size.x - mousepos - 60)), 0);
             Circle.GetComponent<RectTransform>().offsetMin = new Vector2(mousepos - 60, 0);
         }
-       
     }
     public void AddAudio() {
         string songlocation = InputField.GetComponent<TMP_InputField>().text;
