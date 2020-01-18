@@ -3335,6 +3335,8 @@ MonoBehaviour:
   yellowBeat: {fileID: 4468800325853063010, guid: 4305f7d15a42b274887d35e9bb44fe51,
     type: 3}
   SongEnd: {fileID: 8658354977091552379, guid: ab7b7c5024d116046a39b1e9b94c6680, type: 3}
+  GameScore: {fileID: 1131771216}
+  EndScore: {fileID: 1131771216}
   levelStringList: []
 --- !u!1 &1924507112
 GameObject:
