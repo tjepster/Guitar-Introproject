@@ -2025,11 +2025,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2037213629}
     m_Modifications:
-    - target: {fileID: 1484903082257953204, guid: d308c2654ef292f42900952c5b8b0998,
-        type: 3}
-      propertyPath: m_Name
-      value: Player blue
-      objectReference: {fileID: 0}
     - target: {fileID: 1484903082257953194, guid: d308c2654ef292f42900952c5b8b0998,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2100,6 +2095,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1484903082257953204, guid: d308c2654ef292f42900952c5b8b0998,
+        type: 3}
+      propertyPath: m_Name
+      value: Player blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484903082257953206, guid: d308c2654ef292f42900952c5b8b0998,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1833039217}
     - target: {fileID: 1484903082257953207, guid: d308c2654ef292f42900952c5b8b0998,
         type: 3}
       propertyPath: streak
@@ -2110,11 +2115,6 @@ PrefabInstance:
       propertyPath: score
       value: 
       objectReference: {fileID: 1131771218}
-    - target: {fileID: 1484903082257953206, guid: d308c2654ef292f42900952c5b8b0998,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1833039217}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d308c2654ef292f42900952c5b8b0998, type: 3}
 --- !u!4 &933837677 stripped
@@ -2130,11 +2130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7606268137679630508, guid: f54bc4d692c41ab4b934ddda054ac106,
-        type: 3}
-      propertyPath: m_Name
-      value: End
-      objectReference: {fileID: 0}
     - target: {fileID: 7606268137679630504, guid: f54bc4d692c41ab4b934ddda054ac106,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2190,6 +2185,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7606268137679630508, guid: f54bc4d692c41ab4b934ddda054ac106,
+        type: 3}
+      propertyPath: m_Name
+      value: End
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f54bc4d692c41ab4b934ddda054ac106, type: 3}
 --- !u!1001 &1017018520
@@ -2199,11 +2199,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2037213629}
     m_Modifications:
-    - target: {fileID: 7104493097842373864, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
-        type: 3}
-      propertyPath: m_Name
-      value: Player red
-      objectReference: {fileID: 0}
     - target: {fileID: 7104493097842373861, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
         type: 3}
       propertyPath: m_Mesh
@@ -2278,6 +2273,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7104493097842373864, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
+        type: 3}
+      propertyPath: m_Name
+      value: Player red
       objectReference: {fileID: 0}
     - target: {fileID: 7104493097842373865, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
         type: 3}
@@ -4156,11 +4156,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2037213629}
     m_Modifications:
-    - target: {fileID: 7816123850930350606, guid: f44013a37724d3340b3e092cfe75b03a,
-        type: 3}
-      propertyPath: m_Name
-      value: Player yellow
-      objectReference: {fileID: 0}
     - target: {fileID: 7816123850930350592, guid: f44013a37724d3340b3e092cfe75b03a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4231,6 +4226,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7816123850930350604, guid: f44013a37724d3340b3e092cfe75b03a,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1833039217}
+    - target: {fileID: 7816123850930350606, guid: f44013a37724d3340b3e092cfe75b03a,
+        type: 3}
+      propertyPath: m_Name
+      value: Player yellow
+      objectReference: {fileID: 0}
     - target: {fileID: 7816123850930350607, guid: f44013a37724d3340b3e092cfe75b03a,
         type: 3}
       propertyPath: streak
@@ -4241,11 +4246,6 @@ PrefabInstance:
       propertyPath: score
       value: 
       objectReference: {fileID: 1131771218}
-    - target: {fileID: 7816123850930350604, guid: f44013a37724d3340b3e092cfe75b03a,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 1833039217}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f44013a37724d3340b3e092cfe75b03a, type: 3}
 --- !u!4 &2022839750 stripped
