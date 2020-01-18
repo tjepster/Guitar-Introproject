@@ -14,7 +14,6 @@ public class LevelEditor : MonoBehaviour
     public GameObject BluePrefab;
     public GameObject ContentView;
     public GameObject Viewport;
-    public GameObject Canvas;
     public GameObject AudioBar;
     public GameObject AudioLine;
     public GameObject InputField;
@@ -22,7 +21,6 @@ public class LevelEditor : MonoBehaviour
     public GameObject YellowButton;
     public GameObject RedButton;
     public GameObject BlueButton;
-
     public AudioSource song;
 
     // Start is called before the first frame update
@@ -54,7 +52,7 @@ public class LevelEditor : MonoBehaviour
         rt.offsetMax = new Vector2(songlength * 120 - 648, rt.offsetMax.y);
     }
 
-    public void OnYellowClick() 
+    public void OnYellowClick()
     {
         OnContentClick(1);
 
@@ -95,7 +93,6 @@ public class LevelEditor : MonoBehaviour
             Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(ContentView.GetComponent<RectTransform>().rect.size.x - left - 60)), 0);
             Circle.GetComponent<RectTransform>().offsetMin = new Vector2(left - 60, 0);
         }
-       
     }
     public void AddAudio() {
         string songlocation = InputField.GetComponent<TMP_InputField>().text;
