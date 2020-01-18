@@ -1768,6 +1768,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player red
       objectReference: {fileID: 0}
+    - target: {fileID: 7104493097842373861, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 7104493097842373862, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1838,11 +1843,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7104493097842373861, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 7104493097842373865, guid: 7e97aeb09ebbe0f46a25fb22870cbf42,
         type: 3}
       propertyPath: streak
@@ -3451,16 +3451,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player yellow
       objectReference: {fileID: 0}
-    - target: {fileID: 7816123850930350607, guid: f44013a37724d3340b3e092cfe75b03a,
-        type: 3}
-      propertyPath: streak
-      value: 
-      objectReference: {fileID: 315783552}
-    - target: {fileID: 7816123850930350607, guid: f44013a37724d3340b3e092cfe75b03a,
-        type: 3}
-      propertyPath: score
-      value: 
-      objectReference: {fileID: 1131771218}
     - target: {fileID: 7816123850930350592, guid: f44013a37724d3340b3e092cfe75b03a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3531,6 +3521,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7816123850930350607, guid: f44013a37724d3340b3e092cfe75b03a,
+        type: 3}
+      propertyPath: streak
+      value: 
+      objectReference: {fileID: 315783552}
+    - target: {fileID: 7816123850930350607, guid: f44013a37724d3340b3e092cfe75b03a,
+        type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 1131771218}
     - target: {fileID: 7816123850930350604, guid: f44013a37724d3340b3e092cfe75b03a,
         type: 3}
       propertyPath: gameManager

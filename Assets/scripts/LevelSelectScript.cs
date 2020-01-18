@@ -10,11 +10,12 @@ using TMPro;
 public class LevelSelectScript : MonoBehaviour
 {
     public GameObject myPrefab;
-    public GameObject LevelLoader;
+    public GameObject MainCamera;
     bool Executed = false;
     // This script will instantiate the Prefab when the game starts and add text and an onclick event
     public void AddText()
     {
+        //only execute once
         if (Executed == false)
         {
             int posy = 80;
@@ -29,9 +30,6 @@ public class LevelSelectScript : MonoBehaviour
                     //create button
                     GameObject button = Instantiate(myPrefab, new Vector3(transform.position.x, transform.position.y + posy, transform.position.z), Quaternion.identity, transform);
 
-                    //create levelloader
-                    Instantiate(LevelLoader, new Vector3(0, 0, 0), Quaternion.identity);
-
                     //set the text of the button to the name of the level
                     button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(dir2);
 
@@ -42,16 +40,17 @@ public class LevelSelectScript : MonoBehaviour
                     //and displaying the main highscores when not hovering over the button anymore
                     EventTrigger.Entry eventtype = new EventTrigger.Entry();
                     eventtype.eventID = EventTriggerType.PointerEnter;
-                    eventtype.callback.AddListener((eventData) => {StartCoroutine(gameObject.GetComponent<ScoreSetGet>().GetScores(dir2));});
+                    eventtype.callback.AddListener((eventData) => {MainCamera.GetComponent<ScoreSetGet>().GetHighscoresbylevel(dir2);});
                     EventTrigger.Entry eventtype2 = new EventTrigger.Entry();
                     eventtype2.eventID = EventTriggerType.PointerExit;
-                    eventtype2.callback.AddListener((eventData) => { StartCoroutine(gameObject.GetComponent<ScoreSetGet>().GetScores("")); });
+                    eventtype2.callback.AddListener((eventData) => {MainCamera.GetComponent<ScoreSetGet>().GetHighscores(); });
 
                     //add the eventtriggers to the button
                     button.AddComponent<EventTrigger>();
                     button.GetComponent<EventTrigger>().triggers.Add(eventtype);
                     button.GetComponent<EventTrigger>().triggers.Add(eventtype2);
 
+                    //lower the position y value so the next button will be under this button
                     posy -= 50;
                 }
             }
@@ -60,8 +59,15 @@ public class LevelSelectScript : MonoBehaviour
     }
     public void PlayLevel(string level)
     {
+        //Sets the currentlevel value in the playerprefs file to the current level in order to get this value in the game
         PlayerPrefs.SetString("currentLevel", level);
+        //loads the main game
         SceneManager.LoadScene("Level 1");
+    }
+
+    public void GetLevel()
+    {
+        SceneManager.LoadScene("Leveleditor");
     }
 
     public void Quit()
