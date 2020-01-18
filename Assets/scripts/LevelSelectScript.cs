@@ -10,10 +10,7 @@ using TMPro;
 public class LevelSelectScript : MonoBehaviour
 {
     public GameObject myPrefab;
-<<<<<<< HEAD
     public GameObject MainCamera;
-=======
->>>>>>> parent of 78490d1... levelloader
     bool Executed = false;
     // This script will instantiate the Prefab when the game starts and add text and an onclick event
     public void AddText()
