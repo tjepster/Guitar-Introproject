@@ -73,21 +73,28 @@ public class LevelEditor : MonoBehaviour
 
     private void OnContentClick(int colour)
     {
-        float mouseposition = Input.mousePosition.x * Canvas.GetComponent<CanvasScaler>().referenceResolution.x / Screen.width;
-        float left = (ContentView.GetComponent<RectTransform>().rect.size.x - Viewport.GetComponent<RectTransform>().rect.size.x) * scrollbar.GetComponent<Scrollbar>().value + mouseposition - Viewport.transform.position.x;
-        Debug.Log(mouseposition);
+        float mousepos = (ContentView.GetComponent<RectTransform>().rect.size.x - Viewport.GetComponent<RectTransform>().rect.size.x) * scrollbar.GetComponent<Scrollbar>().value + 1.15f * (Input.mousePosition.x - Viewport.transform.position.x);
+        int left = (int)mousepos / 120;
+        left *= 120;
         if (colour == 1)
         {
-            GameObject YellowCircle = Instantiate(YellowPrefab, new Vector3(0, 0, YellowButton.transform.position.z), Quaternion.identity, YellowButton.transform);
-            YellowCircle.GetComponent<RectTransform>().offsetMax = new Vector2((-(ContentView.GetComponent<RectTransform>().rect.size.x - left - 60)), 0);
-            YellowCircle.GetComponent<RectTransform>().offsetMin = new Vector2(left - 60, 0);
-
-
+            GameObject Circle = Instantiate(YellowPrefab, new Vector3(0, 0, YellowButton.transform.position.z), Quaternion.identity, YellowButton.transform);
+            Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(ContentView.GetComponent<RectTransform>().rect.size.x - left - 60)), 0);
+            Circle.GetComponent<RectTransform>().offsetMin = new Vector2(left - 60, 0);
         }
         else if (colour == 2)
-        { }
+        {
+            GameObject Circle = Instantiate(RedPrefab, new Vector3(0, 0, RedButton.transform.position.z), Quaternion.identity, RedButton.transform);
+            Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(ContentView.GetComponent<RectTransform>().rect.size.x - left - 60)), 0);
+            Circle.GetComponent<RectTransform>().offsetMin = new Vector2(left - 60, 0);
+        }
         else if (colour == 3)
-        { }
+        {
+            GameObject Circle = Instantiate(BluePrefab, new Vector3(0, 0, BlueButton.transform.position.z), Quaternion.identity, BlueButton.transform);
+            Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(ContentView.GetComponent<RectTransform>().rect.size.x - left - 60)), 0);
+            Circle.GetComponent<RectTransform>().offsetMin = new Vector2(left - 60, 0);
+        }
+       
     }
     public void AddAudio() {
         string songlocation = InputField.GetComponent<TMP_InputField>().text;
