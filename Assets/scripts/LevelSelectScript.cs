@@ -22,7 +22,7 @@ public class LevelSelectScript : MonoBehaviour
             string[] directories = Directory.GetDirectories(Application.dataPath + "/levels");
             foreach (string dir in directories)
             {
-                if(File.Exists(dir + "/level.txt") && File.Exists(dir + "/song.wav"))
+                if(File.Exists(dir + "/level.txt") && File.Exists(dir + "/song.wav") && !dir.Contains("LevelEditor"))
                 {
                     //get name of level
                     string dir2 = dir.Replace(Application.dataPath + "/levels\\", "");

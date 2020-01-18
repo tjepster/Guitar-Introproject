@@ -73,8 +73,9 @@ public class LevelEditor : MonoBehaviour
 
     private void OnContentClick(int colour)
     {
-        float mousepos = (ContentView.GetComponent<RectTransform>().rect.size.x - Viewport.GetComponent<RectTransform>().rect.size.x) * scrollbar.GetComponent<Scrollbar>().value + 1.15f * (Input.mousePosition.x - Viewport.transform.position.x);
+        float mousepos = (ContentView.GetComponent<RectTransform>().rect.size.x - Viewport.GetComponent<RectTransform>().rect.size.x) * scrollbar.GetComponent<Scrollbar>().value + 1.15f * (Input.mousePosition.x - Viewport.transform.position.x + 35);
         int left = (int)mousepos / 120;
+        Debug.Log(left);
         left *= 120;
         if (colour == 1)
         {
