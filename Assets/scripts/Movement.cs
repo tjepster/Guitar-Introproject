@@ -11,4 +11,8 @@ public class Movement : MonoBehaviour
     {
         rb.AddForce(0, 0, -speed, ForceMode.VelocityChange);
     }
+    void MovStart()
+    {
+        rb.AddForce(0, 0, -speed, ForceMode.VelocityChange);
+    }
 }

@@ -1,10 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
-using TMPro;
 using System.IO;
 using System.Linq;
 using System;
@@ -24,16 +22,11 @@ public class GameManager : MonoBehaviour
     public GameObject yellowBeat;
     public GameObject SongEnd;
 
-    public GameObject GameScore;
-    public GameObject EndScore;
-
-
     public List<string> levelStringList = new List<string>();
 
     private void Start()
     {
         string levelname = "";
-        //load the currentlevel value set in the menu scene
         if (PlayerPrefs.HasKey("currentLevel"))
         {
             levelname = PlayerPrefs.GetString("currentLevel");
@@ -42,25 +35,20 @@ public class GameManager : MonoBehaviour
         {
             // error
         }
-        //get the folder location of the level that has been selected, which must contain a level.txt file and a song.wav file
         string foldername = Application.dataPath + "/levels/" + levelname;
         Readfile(foldername + "/level.txt");
         MakeLevel();
         string songlocation = "file:///" + foldername + "/song.wav";
         StartCoroutine(LoadAudio(songlocation, song));
 
-
     }
-     
-    //load the audio using unitywebrequest to stream the audio file
+ 
     IEnumerator LoadAudio(string songlocation, AudioSource audiosource)
     {
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(songlocation, AudioType.WAV))
         {
-            //wait for the audio file to be ready
             yield return www.SendWebRequest();
 
-            //check if an error has occurred
             if (www.isNetworkError)
             {
                 Debug.Log(www.error);
@@ -177,8 +165,6 @@ public class GameManager : MonoBehaviour
         EndScreen.SetActive(true);
         Time.timeScale = 0;
         song.Pause();
-        EndScore.GetComponent<TextMeshProUGUI>().text = GameScore.GetComponent<Text>().text.Replace("Score ","");
-
     }
 
     // Restarts the level
