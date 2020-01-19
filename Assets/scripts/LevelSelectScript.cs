@@ -40,10 +40,10 @@ public class LevelSelectScript : MonoBehaviour
                     //and displaying the main highscores when not hovering over the button anymore
                     EventTrigger.Entry eventtype = new EventTrigger.Entry();
                     eventtype.eventID = EventTriggerType.PointerEnter;
-                    eventtype.callback.AddListener((eventData) => {MainCamera.GetComponent<ScoreSetGet>().GetHighscoresbylevel(dir2);});
+                    eventtype.callback.AddListener((eventData) => { if (MainCamera.activeSelf) { MainCamera.GetComponent<ScoreSetGet>().GetHighscoresbylevel(dir2); } });
                     EventTrigger.Entry eventtype2 = new EventTrigger.Entry();
                     eventtype2.eventID = EventTriggerType.PointerExit;
-                    eventtype2.callback.AddListener((eventData) => {MainCamera.GetComponent<ScoreSetGet>().GetHighscores(); });
+                    eventtype2.callback.AddListener((eventData) => { if (MainCamera.activeSelf) { MainCamera.GetComponent<ScoreSetGet>().GetHighscores(); } });
 
                     //add the eventtriggers to the button
                     button.AddComponent<EventTrigger>();

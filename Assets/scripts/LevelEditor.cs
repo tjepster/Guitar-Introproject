@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class LevelEditor : MonoBehaviour
@@ -22,7 +22,7 @@ public class LevelEditor : MonoBehaviour
     public GameObject RedButton;
     public GameObject BlueButton;
     public AudioSource song;
-
+    private string songlocation = "";
     // Start is called before the first frame update
     void Start()
     {
@@ -99,10 +99,32 @@ public class LevelEditor : MonoBehaviour
             bluelist.Add(left + 8);
         }
     }
+    public void TestLevel() {
+        CopyFiles("LevelEditor");
+        PlayerPrefs.SetString("currentLevel", "LevelEditor");
+        SceneManager.LoadScene("Level 1");
+    }
+
+    private void CopyFiles(string levelname) {
+        string path = Application.dataPath + "/Levels/" + levelname + "/";
+        string leveltext = CreateLevelText();
+        StreamWriter writer = new StreamWriter(path + "level.txt", false);
+        writer.WriteLine(leveltext);
+        writer.Close();
+        if (File.Exists(path + "song.wav"))
+        {
+            File.Delete(path + "song.wav");
+        }
+        File.Copy(songlocation, path + "song.wav");
+    }
 
     string CreateLevelText() {
         string leveltext = "r \n";
-
+        redlist.Sort();
+        yellowlist.Sort();
+        bluelist.Sort();
+        int redmax = redlist[redlist.Count - 1];
+        
         foreach (int i in redlist)
         {
             leveltext += i + "\n";
@@ -121,7 +143,7 @@ public class LevelEditor : MonoBehaviour
     }
 
     public void AddAudio() {
-        string songlocation = InputField.GetComponent<TMP_InputField>().text;
+        songlocation = InputField.GetComponent<TMP_InputField>().text;
         StartCoroutine(ImportAudio(songlocation,song));
 
     }
