@@ -71,35 +71,55 @@ public class LevelEditor : MonoBehaviour
     private List<int> yellowlist = new List<int>();
     private List<int> redlist = new List<int>();
     private List<int> bluelist = new List<int>();
-    private int yellowindex = 0;
-    private int redindex = 0;
-    private int blueindex = 0;
     private void OnContentClick(int colour)
     {
         float mousepos = (Content.GetComponent<RectTransform>().rect.size.x - Viewport.GetComponent<RectTransform>().rect.size.x) * scrollbar.GetComponent<Scrollbar>().value + 1.15f * (Input.mousePosition.x - 40);
         int left = (int)mousepos / 120;
-        Debug.Log(left);
+        Debug.Log(left + 8);
         mousepos = 120 * left - Viewport.transform.position.x + 66.7f;
         if (colour == 1)
         {
             GameObject Circle = Instantiate(YellowPrefab, new Vector3(0, 0, YellowButton.transform.position.z), Quaternion.identity, YellowButton.transform);
             Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(Content.GetComponent<RectTransform>().rect.size.x - mousepos - 60)), 0);
             Circle.GetComponent<RectTransform>().offsetMin = new Vector2(mousepos - 60, 0);
-
+            yellowlist.Add(left + 8);
         }
         else if (colour == 2)
         {
             GameObject Circle = Instantiate(RedPrefab, new Vector3(0, 0, RedButton.transform.position.z), Quaternion.identity, RedButton.transform);
             Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(Content.GetComponent<RectTransform>().rect.size.x - mousepos - 60)), 0);
             Circle.GetComponent<RectTransform>().offsetMin = new Vector2(mousepos - 60, 0);
+            redlist.Add(left + 8);
         }
         else if (colour == 3)
         {
             GameObject Circle = Instantiate(BluePrefab, new Vector3(0, 0, BlueButton.transform.position.z), Quaternion.identity, BlueButton.transform);
             Circle.GetComponent<RectTransform>().offsetMax = new Vector2((-(Content.GetComponent<RectTransform>().rect.size.x - mousepos - 60)), 0);
             Circle.GetComponent<RectTransform>().offsetMin = new Vector2(mousepos - 60, 0);
+            bluelist.Add(left + 8);
         }
     }
+
+    string CreateLevelText() {
+        string leveltext = "r \n";
+
+        foreach (int i in redlist)
+        {
+            leveltext += i + "\n";
+        }
+        leveltext += "y \n";
+        foreach (int i in yellowlist)
+        {
+            leveltext += i + "\n";
+        }
+        leveltext += "b \n";
+        foreach (int i in bluelist)
+        {
+            leveltext += i + "\n";
+        }
+        return leveltext;
+    }
+
     public void AddAudio() {
         string songlocation = InputField.GetComponent<TMP_InputField>().text;
         StartCoroutine(ImportAudio(songlocation,song));
