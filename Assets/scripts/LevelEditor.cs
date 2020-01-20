@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -123,7 +124,8 @@ public class LevelEditor : MonoBehaviour
         redlist.Sort();
         yellowlist.Sort();
         bluelist.Sort();
-        int redmax = redlist[redlist.Count - 1];
+      
+        int[] maxvalues = { redlist[redlist.Count - 1], yellowlist[yellowlist.Count - 1], bluelist[bluelist.Count - 1]};
         
         foreach (int i in redlist)
         {
@@ -139,6 +141,7 @@ public class LevelEditor : MonoBehaviour
         {
             leveltext += i + "\n";
         }
+        leveltext += "end \n" + (maxvalues.Max() + 2);
         return leveltext;
     }
 
