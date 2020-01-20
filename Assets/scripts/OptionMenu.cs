@@ -12,4 +12,13 @@ public class OptionMenu : MonoBehaviour
     {
         audioMixer.SetFloat("Volume", volume);
     }
+    public void SetQuality(int qualityIndex)
+    {
+        QualitySettings.SetQualityLevel(qualityIndex);
+    }
+
+    public void FullScreen(bool full)
+    {
+        Screen.fullScreen = full;
+    }
 }
