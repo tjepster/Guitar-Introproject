@@ -148,6 +148,9 @@ public class LevelEditor : MonoBehaviour
 
     }
 
+    public void MainMenu() {
+        SceneManager.LoadScene("Menu");
+    }
     public void PlayAudio()
     { song.Play(); }
 
