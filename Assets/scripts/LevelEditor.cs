@@ -10,19 +10,19 @@ using TMPro;
 
 public class LevelEditor : MonoBehaviour
 {
+    public GameObject YellowButton;
+    public GameObject RedButton;
+    public GameObject BlueButton;
+    public GameObject Content;
     public GameObject YellowPrefab;
     public GameObject RedPrefab;
     public GameObject BluePrefab;
     public GameObject Viewport;
-    public GameObject Content;
     public GameObject AudioBar;
     public GameObject AudioLine;
     public GameObject SongInputField;
     public GameObject NameInputField;
     public GameObject scrollbar;
-    public GameObject YellowButton;
-    public GameObject RedButton;
-    public GameObject BlueButton;
     public AudioSource song;
     private string songlocation = "";
     // Start is called before the first frame update
@@ -129,8 +129,11 @@ public class LevelEditor : MonoBehaviour
         {
             File.Delete(path + "song.wav");
         }
-        File.Copy(songlocation, path + "song.wav");
-    }
+        if (songlocation != "" && File.Exists(songlocation))
+        {
+            File.Copy(songlocation, path + "song.wav");
+        }
+        }
 
     string CreateLevelText() {
         string leveltext = "r\n";

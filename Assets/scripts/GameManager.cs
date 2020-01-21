@@ -41,13 +41,13 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // error
+            SceneManager.LoadScene("Menu");
         }
         //get the folder location of the level that has been selected, which must contain a level.txt file and a song.wav file
         string foldername = Application.dataPath + "/levels/" + levelname;
         Readfile(foldername + "/level.txt");
         MakeLevel();
-        string songlocation = "file:///" + foldername + "/song.wav";
+        string songlocation = foldername + "/song.wav";
         StartCoroutine(LoadAudio(songlocation, song));
 
 
@@ -56,22 +56,25 @@ public class GameManager : MonoBehaviour
     //load the audio using unitywebrequest to stream the audio file
     IEnumerator LoadAudio(string songlocation, AudioSource audiosource)
     {
-        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(songlocation, AudioType.WAV))
+        if (File.Exists(songlocation))
         {
-            //wait for the audio file to be ready
-            yield return www.SendWebRequest();
+            using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("file:///" + songlocation, AudioType.WAV))
+            {
+                //wait for the audio file to be ready
+                yield return www.SendWebRequest();
 
-            //check if an error has occurred
-            if (www.isNetworkError)
-            {
-                Debug.Log(www.error);
+                //check if an error has occurred
+                if (www.isNetworkError)
+                {
+                    Debug.Log(www.error);
+                }
+                else
+                {
+                    audiosource.clip = DownloadHandlerAudioClip.GetContent(www);
+                }
             }
-            else
-            {
-                audiosource.clip = DownloadHandlerAudioClip.GetContent(www);
-            }
-        }
             audiosource.Play();
+        }
     }
 
     // This method is called when the esc button is pressed it can either start or stop a pause screen

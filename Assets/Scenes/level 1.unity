@@ -1283,8 +1283,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c99aebdfd642aa34fad6cf6639cd94c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 1131771218}
-  _score: {fileID: 864676654}
 --- !u!114 &864676654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,11 +1494,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2037213629}
     m_Modifications:
-    - target: {fileID: 1484903082257953204, guid: d308c2654ef292f42900952c5b8b0998,
-        type: 3}
-      propertyPath: m_Name
-      value: Player blue
-      objectReference: {fileID: 0}
     - target: {fileID: 1484903082257953194, guid: d308c2654ef292f42900952c5b8b0998,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1570,6 +1563,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1484903082257953204, guid: d308c2654ef292f42900952c5b8b0998,
+        type: 3}
+      propertyPath: m_Name
+      value: Player blue
       objectReference: {fileID: 0}
     - target: {fileID: 1484903082257953206, guid: d308c2654ef292f42900952c5b8b0998,
         type: 3}
@@ -2207,7 +2205,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265326225}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: f98c8230771a86040bbe393864b22c73, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 56385d7557402ba438d6d0966b4babb9, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -3447,6 +3445,8 @@ MonoBehaviour:
   yellowBeat: {fileID: 4468800325853063010, guid: 4305f7d15a42b274887d35e9bb44fe51,
     type: 3}
   SongEnd: {fileID: 8658354977091552379, guid: ab7b7c5024d116046a39b1e9b94c6680, type: 3}
+  GameScore: {fileID: 0}
+  EndScore: {fileID: 0}
   levelStringList: []
 --- !u!1 &1924507112
 GameObject:
