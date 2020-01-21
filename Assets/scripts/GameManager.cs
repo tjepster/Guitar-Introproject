@@ -29,10 +29,10 @@ public class GameManager : MonoBehaviour
 
 
     public List<string> levelStringList = new List<string>();
+    private string levelname = "";
 
     private void Start()
     {
-        string levelname = "";
         //load the currentlevel value set in the menu scene
         if (PlayerPrefs.HasKey("currentLevel"))
         {
@@ -174,11 +174,17 @@ public class GameManager : MonoBehaviour
     // When the endsong objects collides with the playerobjects the level is over and an endscreen pops up
     public void EndGame()
     {
-        EndScreen.SetActive(true);
-        Time.timeScale = 0;
-        song.Pause();
-        EndScore.GetComponent<TextMeshProUGUI>().text = GameScore.GetComponent<Text>().text.Replace("Score ","");
-
+        if (levelname == "LevelEditor")
+        {
+            SceneManager.LoadScene("Leveleditor");
+        }
+        else
+        {
+            EndScreen.SetActive(true);
+            Time.timeScale = 0;
+            song.Pause();
+            EndScore.GetComponent<TextMeshProUGUI>().text = GameScore.GetComponent<Text>().text.Replace("Score ", "");
+        }
     }
 
     // Restarts the level
