@@ -20,6 +20,9 @@ public class LevelEditor : MonoBehaviour
     public GameObject SongInputField;
     public GameObject NameInputField;
     public GameObject scrollbar;
+    public GameObject YellowButton;
+    public GameObject RedButton;
+    public GameObject BlueButton;
     public AudioSource song;
     private string songlocation = "";
     // Start is called before the first frame update
@@ -72,20 +75,6 @@ public class LevelEditor : MonoBehaviour
     private List<int> bluelist = new List<int>();
     private void OnContentClick(int colour)
     {
-<<<<<<< HEAD
-        Vector3 mouseposition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1);
-        float left = ContentView.GetComponent<RectTransform>().rect.size.x * scrollbar.GetComponent<Scrollbar>().value + mouseposition.x - Viewport.transform.position.x;
-        Debug.Log(left);
-        if (colour == 1)
-        {
-            GameObject YellowCircle = Instantiate(YellowPrefab, new Vector3(left, 0, ContentView.GetComponent<RectTransform>().position.z), Quaternion.identity, ContentView.transform);
-
-        }
-        else if (colour == 2)
-        { }
-        else if (colour == 3)
-        { }
-=======
         float mousepos = (Content.GetComponent<RectTransform>().rect.size.x - Viewport.GetComponent<RectTransform>().rect.size.x) * scrollbar.GetComponent<Scrollbar>().value + 1.15f * (Input.mousePosition.x - 40);
         int left = (int)mousepos / 120;
         Debug.Log(left + 8);
@@ -111,7 +100,6 @@ public class LevelEditor : MonoBehaviour
             Circle.GetComponent<RectTransform>().offsetMin = new Vector2(mousepos - 60, 0);
             bluelist.Add(left + 8);
         }
->>>>>>> 2a441892dd7a2d921e48779fe4bb0d8b3d1511a0
     }
     public void TestLevel() {
         CopyFiles(Application.dataPath + "/Levels/LevelEditor/");
