@@ -2,7 +2,13 @@
 using System.Collections.Generic;
 using System.IO; // streamwriter 
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System.IO;
+using System.Linq;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +18,61 @@ public class GameManager : MonoBehaviour
     public static bool GameIsPaused = false;
     public AudioSource song;
     public GameObject pauseMenu;
+    public GameObject EndScreen;
+
+    public GameObject redBeat;
+    public GameObject blueBeat;
+    public GameObject yellowBeat;
+    public GameObject SongEnd;
+
+    public GameObject GameScore;
+    public GameObject EndScore;
+
+
+    public List<string> levelStringList = new List<string>();
+    private string levelname = "";
+
+    private void Start()
+    {
+        //load the currentlevel value set in the menu scene
+        if (PlayerPrefs.HasKey("currentLevel"))
+        {
+            levelname = PlayerPrefs.GetString("currentLevel");
+        }
+        else
+        {
+            // error
+        }
+        //get the folder location of the level that has been selected, which must contain a level.txt file and a song.wav file
+        string foldername = Application.dataPath + "/levels/" + levelname;
+        Readfile(foldername + "/level.txt");
+        MakeLevel();
+        string songlocation = "file:///" + foldername + "/song.wav";
+        StartCoroutine(LoadAudio(songlocation, song));
+
+
+    }
+     
+    //load the audio using unitywebrequest to stream the audio file
+    IEnumerator LoadAudio(string songlocation, AudioSource audiosource)
+    {
+        using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip(songlocation, AudioType.WAV))
+        {
+            //wait for the audio file to be ready
+            yield return www.SendWebRequest();
+
+            //check if an error has occurred
+            if (www.isNetworkError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                audiosource.clip = DownloadHandlerAudioClip.GetContent(www);
+            }
+        }
+            audiosource.Play();
+    }
 
     // This method is called when the esc button is pressed it can either start or stop a pause screen
     public void Pause()
@@ -55,10 +116,93 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+<<<<<<< HEAD
     public void Start()
     {
         string path = Application.dataPath + "/level.txt";
         StreamReader readLevel = new StreamReader(path);
 
+=======
+    // Here we read the level file and make it into a list of strings
+    private void Readfile(string filename)
+    {
+        StreamReader reader = new StreamReader(filename);
+
+        while (!reader.EndOfStream)
+        {
+            string line = reader.ReadLine();
+            levelStringList.Add(line);
+        }
+        reader.Close();
+    }
+
+    // Here we use the list of strings to make the level
+    // We do this by checking if the line had a number or a sign if it is a number we use that as a coörtdinate to instantiate the right object. A letter or word indacates we need to switch to instantiating another object.
+    void MakeLevel()
+    {
+        float pos = 0;
+        string Beat = "start";
+        bool Ispos;
+        for (int i = 0; i < levelStringList.Count; i++)
+        {
+            string line = levelStringList[i];
+            try
+            {
+                pos = float.Parse(line);
+                Ispos = true;
+            }
+            catch (FormatException)
+            {
+                Beat = line;
+                Ispos = false;
+            }
+            if (Beat != "r" && Beat != "y" && Beat != "b" && Beat == "End")
+            {
+
+            }
+            else if (Beat == "r" && Ispos)
+            {
+                Instantiate(redBeat, new Vector3(0, 0.25f, pos), Quaternion.identity);
+            }
+            else if (Beat == "y" && Ispos)
+            {
+                Instantiate(yellowBeat, new Vector3(-2, 0.25f, pos), Quaternion.identity);
+            }
+            else if (Beat == "b" && Ispos)
+            {
+                Instantiate(blueBeat, new Vector3(2, 0.25f, pos), Quaternion.identity);
+            }
+            else if (Beat == "end" && Ispos)
+            {
+                Instantiate(SongEnd, new Vector3(0, 0.5f, pos), Quaternion.identity);
+            }
+        }
+    }
+
+    // When the endsong objects collides with the playerobjects the level is over and an endscreen pops up
+    public void EndGame()
+    {
+        if (levelname == "LevelEditor")
+        {
+            SceneManager.LoadScene("Leveleditor");
+        }
+        else
+        {
+            EndScreen.SetActive(true);
+            Time.timeScale = 0;
+            song.Pause();
+            EndScore.GetComponent<TextMeshProUGUI>().text = GameScore.GetComponent<Text>().text.Replace("Score ", "");
+        }
+    }
+
+    // Restarts the level
+    public void Restart()
+    {
+        GameIsPaused = false;
+        Time.timeScale = 1;
+        song.Stop();
+        pauseMenu.SetActive(false);
+        SceneManager.LoadScene("level 1");
+>>>>>>> 2a441892dd7a2d921e48779fe4bb0d8b3d1511a0
     }
 }
