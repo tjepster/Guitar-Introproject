@@ -129,7 +129,7 @@ public class LevelEditor : MonoBehaviour
     }
 
     string CreateLevelText() {
-        string leveltext = "r \n";
+        string leveltext = "r\n";
         redlist.Sort();
         yellowlist.Sort();
         bluelist.Sort();
@@ -140,17 +140,17 @@ public class LevelEditor : MonoBehaviour
         {
             leveltext += i + "\n";
         }
-        leveltext += "y \n";
+        leveltext += "y\n";
         foreach (int i in yellowlist)
         {
             leveltext += i + "\n";
         }
-        leveltext += "b \n";
+        leveltext += "b\n";
         foreach (int i in bluelist)
         {
             leveltext += i + "\n";
         }
-        leveltext += "end \n" + (maxvalues.Max() + 2);
+        leveltext += "end\n" + (maxvalues.Max() + 2);
         return leveltext;
     }
 
