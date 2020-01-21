@@ -17,7 +17,8 @@ public class LevelEditor : MonoBehaviour
     public GameObject Content;
     public GameObject AudioBar;
     public GameObject AudioLine;
-    public GameObject InputField;
+    public GameObject SongInputField;
+    public GameObject NameInputField;
     public GameObject scrollbar;
     public GameObject YellowButton;
     public GameObject RedButton;
@@ -101,13 +102,21 @@ public class LevelEditor : MonoBehaviour
         }
     }
     public void TestLevel() {
-        CopyFiles("LevelEditor");
+        CopyFiles(Application.dataPath + "/Levels/LevelEditor/");
         PlayerPrefs.SetString("currentLevel", "LevelEditor");
         SceneManager.LoadScene("Level 1");
     }
 
-    private void CopyFiles(string levelname) {
-        string path = Application.dataPath + "/Levels/" + levelname + "/";
+    public void SaveLevel() {
+        string path = Application.dataPath + "/Levels/" + NameInputField.GetComponent<TMP_InputField>().text + "/";
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
+            CopyFiles(path);
+    }
+
+    private void CopyFiles(string path) {
         string leveltext = CreateLevelText();
         StreamWriter writer = new StreamWriter(path + "level.txt", false);
         writer.WriteLine(leveltext);
@@ -146,7 +155,7 @@ public class LevelEditor : MonoBehaviour
     }
 
     public void AddAudio() {
-        songlocation = InputField.GetComponent<TMP_InputField>().text;
+        songlocation = SongInputField.GetComponent<TMP_InputField>().text;
         StartCoroutine(ImportAudio(songlocation,song));
 
     }
