@@ -129,8 +129,11 @@ public class LevelEditor : MonoBehaviour
         {
             File.Delete(path + "song.wav");
         }
-        File.Copy(songlocation, path + "song.wav");
-    }
+        if (songlocation != "" && File.Exists(songlocation))
+        {
+            File.Copy(songlocation, path + "song.wav");
+        }
+        }
 
     string CreateLevelText() {
         string leveltext = "r\n";
