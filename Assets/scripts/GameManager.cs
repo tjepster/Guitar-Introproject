@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO; // streamwriter 
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
@@ -115,6 +116,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+<<<<<<< HEAD
+    public void Start()
+    {
+        string path = Application.dataPath + "/level.txt";
+        StreamReader readLevel = new StreamReader(path);
+
+=======
     // Here we read the level file and make it into a list of strings
     private void Readfile(string filename)
     {
@@ -195,5 +203,6 @@ public class GameManager : MonoBehaviour
         song.Stop();
         pauseMenu.SetActive(false);
         SceneManager.LoadScene("level 1");
+>>>>>>> 2a441892dd7a2d921e48779fe4bb0d8b3d1511a0
     }
 }
