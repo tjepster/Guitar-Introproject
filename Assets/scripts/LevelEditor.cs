@@ -107,6 +107,10 @@ public class LevelEditor : MonoBehaviour
         SceneManager.LoadScene("Level 1");
     }
 
+    public void Reset() {
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
     public void SaveLevel() {
         string path = Application.dataPath + "/Levels/" + NameInputField.GetComponent<TMP_InputField>().text + "/";
         if (!Directory.Exists(path))
