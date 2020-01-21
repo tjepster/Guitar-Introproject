@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO; // streamwriter 
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -54,5 +55,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void Start()
+    {
+        string path = Application.dataPath + "/level.txt";
+        StreamReader readLevel = new StreamReader(path);
 
+    }
 }
