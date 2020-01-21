@@ -16,6 +16,8 @@ public class PlayerAction : MonoBehaviour
     // start of the voice recognision sofware
     private KeywordRecognizer keywordRecognizer;
     readonly private Dictionary<string, Action> actions = new Dictionary<string, Action>();
+
+    public GameObject Fire;
     void Start()
     {
         actions.Add(Colour, Rainbow);
@@ -39,17 +41,16 @@ public class PlayerAction : MonoBehaviour
         Pressed();
         if (bc.Presswindow == true)
         {
-            GameObject.Find(bc.CurrentBeat).SetActive(false);
+            GameObject.Destroy(bc.CurrentBeat);
             FindObjectOfType<Score>().score += 200;
             FindObjectOfType<Streak>().streak += 1;
+            FirePress();
             bc.Presswindow = false;
-
         }
         else
         {
             FindObjectOfType<Streak>().streak = 0;
         }
-        Invoke("ButtonUp", 0.1f);
     }
 
     // checks if the button press is at the right time to give points or if not to end the streak
@@ -60,17 +61,16 @@ public class PlayerAction : MonoBehaviour
             Pressed();
             if (bc.Presswindow == true)
             {
-                GameObject.Find(bc.CurrentBeat).SetActive(false);
+                GameObject.Destroy(bc.CurrentBeat);
                 FindObjectOfType<Score>().score += 200;
                 FindObjectOfType<Streak>().streak += 1;
+                FirePress();
                 bc.Presswindow = false;
-
             }
             else
             {
                 FindObjectOfType<Streak>().streak = 0;
             }
-            Invoke("ButtonUp", 0.1f);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -83,6 +83,7 @@ public class PlayerAction : MonoBehaviour
     {
         scale.localScale = new Vector3(1, 0.2f, 1);
         scale.localPosition -= new Vector3(0, 0.05f, 0);
+        Invoke("ButtonUp", 0.1f);
     }
 
     // brings the button back to normal
@@ -90,5 +91,22 @@ public class PlayerAction : MonoBehaviour
     {
         scale.localScale = new Vector3(1, 0.25f, 1);
         scale.localPosition += new Vector3(0, 0.05f, 0);
+    }
+
+    // Here a fire is instantiated on the player button if a correct hit is scored the fires destroy themselfs
+    void FirePress()
+    {
+        if (Colour == "red")
+        {
+            Instantiate(Fire, new Vector3(0, 0.4f, 7.5f), Quaternion.Euler(90, 0, 0));
+        }
+        else if (Colour == "yellow")
+        {
+            Instantiate(Fire, new Vector3(-2, 0.4f, 7.5f), Quaternion.Euler(90, 0, 0));
+        }
+        else if (Colour == "blue")
+        {
+            Instantiate(Fire, new Vector3(2, 0.4f, 7.5f), Quaternion.Euler(90, 0, 0));
+        }
     }
 }

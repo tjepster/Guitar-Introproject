@@ -5,14 +5,17 @@ using UnityEngine;
 public class FireActive : MonoBehaviour
 {
 
-    // this does not work yet but the methods should start and stop the particle effect
-    public ParticleSystem fire;
-    public void StartTheFire()
+    //Here we let each fire destroy itself after a certain time
+    //The fires are instantiated when a beat is correctly pushed to indacate a correct hit
+
+    public float Timer = 0.2f;
+    private void Update()
     {
-        fire.Play(true);
-    }
-    public void StopTheFire()
-    {
-        fire.Play(false);
+        Timer -= Time.deltaTime;
+
+        if (Timer <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
