@@ -263,11 +263,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1948274024}
     m_Modifications:
-    - target: {fileID: 3267019661777704137, guid: fb910cc74afdb6d448f9e4805ccc5214,
-        type: 3}
-      propertyPath: m_Name
-      value: BlueCircle
-      objectReference: {fileID: 0}
     - target: {fileID: 1752409254156755580, guid: fb910cc74afdb6d448f9e4805ccc5214,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -372,6 +367,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267019661777704137, guid: fb910cc74afdb6d448f9e4805ccc5214,
+        type: 3}
+      propertyPath: m_Name
+      value: BlueCircle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb910cc74afdb6d448f9e4805ccc5214, type: 3}
@@ -531,7 +531,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 68606590}
   m_HandleRect: {fileID: 68606589}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1031,8 +1031,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1048,7 +1048,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 7
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1077,7 +1077,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1559,8 +1559,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 11
+  m_fontSizeBase: 11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2361,7 +2361,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back to Main Menu
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2389,8 +2389,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2406,7 +2406,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 13
+  m_firstOverflowCharacterIndex: 5
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -2430,10 +2430,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 792214398}
-    characterCount: 17
+    characterCount: 9
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 4
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 2
     pageCount: 1
@@ -2544,8 +2544,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2699,8 +2699,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3192,8 +3192,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3780,11 +3780,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1948274024}
     m_Modifications:
-    - target: {fileID: 6546330326707557119, guid: 36ac7adec59873744b9722b4db72a721,
-        type: 3}
-      propertyPath: m_Name
-      value: RedCircle
-      objectReference: {fileID: 0}
     - target: {fileID: 2005132567711986080, guid: 36ac7adec59873744b9722b4db72a721,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3889,6 +3884,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546330326707557119, guid: 36ac7adec59873744b9722b4db72a721,
+        type: 3}
+      propertyPath: m_Name
+      value: RedCircle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36ac7adec59873744b9722b4db72a721, type: 3}
@@ -4101,11 +4101,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1948274024}
     m_Modifications:
-    - target: {fileID: 7742107344977408410, guid: 47d40f91a68f21142aef1f04945ed202,
-        type: 3}
-      propertyPath: m_Name
-      value: YellowCircle
-      objectReference: {fileID: 0}
     - target: {fileID: 7686377021427949956, guid: 47d40f91a68f21142aef1f04945ed202,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4210,6 +4205,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742107344977408410, guid: 47d40f91a68f21142aef1f04945ed202,
+        type: 3}
+      propertyPath: m_Name
+      value: YellowCircle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47d40f91a68f21142aef1f04945ed202, type: 3}
@@ -4325,6 +4325,7 @@ MonoBehaviour:
   AudioBar: {fileID: 38418313}
   AudioLine: {fileID: 692182425}
   SongInputField: {fileID: 1851358222}
+  NameInputField: {fileID: 0}
   scrollbar: {fileID: 163330410}
   YellowButton: {fileID: 1232167707}
   RedButton: {fileID: 1495044753}
@@ -4844,8 +4845,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5628,8 +5629,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
