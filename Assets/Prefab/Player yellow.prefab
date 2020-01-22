@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7816123850930350594}
   - component: {fileID: 7816123850930350605}
   - component: {fileID: 7816123850930350604}
+  - component: {fileID: 273189289783797600}
   - component: {fileID: 7816123850930350607}
   m_Layer: 0
   m_Name: Player yellow
@@ -106,7 +107,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Presswindow: 0
-  CurrentBeat: 
+  CurrentBeat: {fileID: 0}
+  gameManager: {fileID: 0}
+--- !u!114 &273189289783797600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7816123850930350606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9423e249da00756409717ba6735059c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7816123850930350607
 MonoBehaviour:
   m_ObjectHideFlags: 0

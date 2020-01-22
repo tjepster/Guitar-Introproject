@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-
-public class PlayerAction : MonoBehaviour
+public class PlayerActionYellow : MonoBehaviour
 {
     // conections to the transform and Beatcollision components of the playerbutton
     public Transform scale;
@@ -10,7 +11,7 @@ public class PlayerAction : MonoBehaviour
     public string Colour;
     public string Key;
     // start of the voice recognision sofware
-    bool yellow, red, blue = false;
+    bool yellow = false;
     public GameObject Fire;
     public static PlayerAction playeraction;
 
@@ -32,14 +33,22 @@ public class PlayerAction : MonoBehaviour
         }
     }
 
-   
+    public static void RecognizedSpeech(string color)
+    {
+        if (color == "yellow")
+        {
+            FindObjectOfType<PlayerActionYellow>().yellow = true;
+        }
+
+    }
 
 
     // checks if the button press is at the right time to give points or if not to end the streak
     void Update()
     {
-        if (Input.GetKeyDown(Key))
+        if (yellow)
         {
+            yellow = false;
             Pressed();
             if (bc.Presswindow == true)
             {
